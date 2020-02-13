@@ -1,0 +1,66 @@
+# This file is part of JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+# by Johannes Laurin Hörmann <johannes.laurin@gmail.com>, Ward Poelmans <wpoely86@gmail.com>
+
+easyblock = 'ConfigureMake'
+
+name = 'PLUMED'
+version = '2.5.3'
+
+homepage = 'http://www.plumed.org'
+description = """PLUMED is an open source library for free energy calculations in molecular systems which
+ works together with some of the most popular molecular dynamics engines. Free energy calculations can be 
+ performed as a function of many order parameters with a particular  focus on biological problems, using
+ state of the art methods such as metadynamics, umbrella sampling and Jarzynski-equation based steered MD.
+ The software, written in C++, can be easily interfaced with both fortran and C/C++ codes.
+"""
+
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+toolchainopts = {'pic': True, 'usempi': 'True'}
+
+source_urls = ['https://github.com/plumed/plumed2/archive/']
+sources = ['v%(version)s.tar.gz']
+
+patches = [
+    #'plumed_2.3.3_gromacs_2016.4.patch',
+    # Plumed 2.5.3 caused an assertion error in BFD with ld -r -o (binutils 2.32). ld.gold seems to link fine.
+    'PLUMED-2.5.3-ld.gold.patch',
+]
+
+dependencies = [
+    ('binutils','2.32'),
+    ('FFTW', '3.3.8'),
+    ('GSL', '2.5'),
+    ('libmatheval', '1.1.11'),
+    ('libxdrfile', '1.1.4'), # local
+    ('netCDF', '4.6.3'),
+    ('Python', '3.6.8'),
+    ('Tcl', '8.6.9'),
+    ('VMD-Plugins', '1.9.3'), # local
+    ('zlib', '1.2.11'),
+]
+
+preconfigopts = 'LIBS="-ltcl8.6 -lnetcdf $LIBLAPACK $LIBS" '
+configopts = ' --enable-gsl --enable-modules=all'
+# prebuildopts = 'source sourceme.sh && '
+
+# runtest = "check"
+# tests   = ["make installcheck", "make -C regtest"]
+
+sanity_check_paths = {
+    'files': ['bin/plumed', 'lib/libplumedKernel.%s' % SHLIB_EXT, 'lib/libplumed.%s' % SHLIB_EXT],
+    'dirs': ['lib/plumed']
+}
+
+modextrapaths = {
+    'PLUMED_KERNEL': 'lib/libplumedKernel.%s' % SHLIB_EXT,
+    'PLUMED_ROOT': 'lib/plumed',
+    'PLUMED_VIMPATH': 'lib/plumed/vim',
+    'PYTHONPATH': 'lib/plumed/python',
+}
+
+# configure: WARNING: **** Bash completion for plumed will not be installed, please add the following two lines to your bashrc
+# configure: WARNING: **** _plumed() { eval "$(plumed --no-mpi completion 2>/dev/null)";}
+# configure: WARNING: **** complete -F _plumed -o default plumed
+
+moduleclass = 'chem'

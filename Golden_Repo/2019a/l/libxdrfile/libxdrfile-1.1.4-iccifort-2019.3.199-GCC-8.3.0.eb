@@ -1,0 +1,35 @@
+# This file is part of JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+easyblock = 'ConfigureMake'
+
+name = 'libxdrfile'
+version = '1.1.4'
+
+homepage = 'http://www.gromacs.org/Developer_Zone/Programming_Guide/XTC_Library'
+description = """This library allows to read GROMACS trr and xtc files and also to
+convert from one format to another.
+"""
+
+
+toolchain = {'name': 'iccifort', 'version': '2019.3.199-GCC-8.3.0'}
+# toolchain = {'name': 'intel', 'version': '2019a'}
+toolchainopts = {'pic': True}
+
+# ftp://ftp.gromacs.org/pub/contrib/xdrfile-1.1.4.tar.gz
+source_urls = ['ftp://ftp.gromacs.org/pub/contrib/']
+sources = ['xdrfile-%(version)s.tar.gz']
+
+dependencies = []
+
+build_type = False
+host_type = False
+
+configopts = "--enable-shared"
+
+runtest = "test"
+
+sanity_check_paths = {
+   'files': [ 'bin/trr2xtc', 'lib/libxdrfile.a', 'lib/libxdrfile.la', 'lib/libxdrfile.so' ],
+   'dirs': ['bin', 'include', 'lib'],
+}
+
+moduleclass = 'lib'
