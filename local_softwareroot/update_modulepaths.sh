@@ -1,0 +1,16 @@
+#!/bin/bash
+# GLOBAL_UI_ROOT=${SOFTWAREROOT}/stages/${STAGE}/UI
+# LOCAL_SOFTWAREROOT=${PROJECT}/common/juwels/easybuild
+LOCAL_MODULES_ROOT=${LOCAL_SOFTWAREROOT}/stages/${STAGE}/modules
+
+PATTERN_PREFIX='(prepend_path\("MODULEPATH",[[:space:]]*")'
+PATTERN_SUFFIX='(.*"\))'
+GREP_PATTERN="${PATTERN_PREFIX}${SOFTWAREROOT}${PATTERN_SUFFIX}"
+echo "grep -rEl '${GREP_PATTERN}'"
+SED_PATTERN='s|'"${PATTERN_PREFIX}${SOFTWAREROOT}${PATTERN_SUFFIX}"'|\1'"${LOCAL_SOFTWAREROOT}"'\2|g'
+echo "sed -i '${SED_PATTERN}'"
+# grep -rEl "${PATTERN_PREFIX}${SOFTWAREROOT}${PATTERN_SUFFIX}" "${LOCAL_MODULES_ROOT}" | xargs sed 's|'"${PATTERN_PREFIX}${SOFTWAREROOT}${PATTERN_SUFFIX}|"'|\1'
+grep -rEl "${GREP_PATTERN}" "${LOCAL_MODULES_ROOT}" | xargs sed -i -r "${SED_PATTERN}"
+# | xargs sed "s|${
+# delete current links
+
