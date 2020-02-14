@@ -31,9 +31,9 @@ where `$LOCAL_SOFTWAREROOT` is some subdirectory within `$PROJECT`, i.e.
 `$PROJECT/commond/juwels/easybuild/stages/2019a`. Next, two bash snippets
 help to apply necessary modifications:
 
-* update_symlinks.sh creates user interface symlinks below the UI folder,
+* `update_symlinks.sh` creates user interface symlinks below the UI folder,
   reflecting gloabl stack
-* update_modulepaths.sh changes all modifications to the MODULEPATH within 
+* `update_modulepaths.sh` changes all modifications to the `MODULEPATH` within 
   modulefiles to point to the local stack
 
 Some compiler version entries below 'modules' do not meet the format as
