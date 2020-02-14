@@ -10,11 +10,11 @@ This fork integrates easybuild configs in project hfr13
 
 # Local (user/project) software stack modifications
 
-Modeled analogous to global software stack at /gpfs/software
+Modeled analogous to global software stack at `/gpfs/software`
 with the purpose to allow EasyBuild to find both global and local software,
 building new software locally without rebuilding globally available software.
 
-Within $SOFTWAREROOT/stages/$STAGE, 
+Within `$SOFTWAREROOT/stages/$STAGE`, 
 
 * eb_repo contains EasyConfig files of all installed modules
 * modules contains all module files
@@ -25,9 +25,9 @@ Within $SOFTWAREROOT/stages/$STAGE,
 In order to use EasyBuild locally AND
 emulate the global user interface as close as possible, we must
 intitialize 'eb_repo', 'modules' and 'UI'
-within $LOCAL_SOFTWAREROOT/stages/$STAGE
+within `$LOCAL_SOFTWAREROOT/stages/$STAGE`
 as clones of the global stage's originals,
-where $LOCAL_SOFTWAREROOT is some subdirectory within $PROJECT, i.e.
+where `$LOCAL_SOFTWAREROOT` is some subdirectory within `$PROJECT`, i.e.
 `$PROJECT/commond/juwels/easybuild/stages/2019a`. Next, two bash snippets
 help to apply necessary modifications:
 
