@@ -22,7 +22,6 @@ source_urls = ['https://github.com/plumed/plumed2/archive/']
 sources = ['v%(version)s.tar.gz']
 
 patches = [
-    #'plumed_2.3.3_gromacs_2016.4.patch',
     # Plumed 2.5.3 caused an assertion error in BFD with ld -r -o (binutils 2.32). ld.gold seems to link fine.
     'PLUMED-2.5.3-ld.gold.patch',
 ]
@@ -42,10 +41,16 @@ dependencies = [
 
 preconfigopts = 'LIBS="-ltcl8.6 -lnetcdf $LIBLAPACK $LIBS" '
 configopts = ' --enable-gsl --enable-modules=all'
-# prebuildopts = 'source sourceme.sh && '
 
-# runtest = "check"
-# tests   = ["make installcheck", "make -C regtest"]
+dependencies = [
+    ('zlib', '1.2.11'),
+    ('GSL', '2.5'),
+    ('libmatheval', '1.1.11'),
+]
+
+preconfigopts = 'env FC=$MPIF90 LIBS="$LIBLAPACK $LIBS" '
+configopts = ' --exec-prefix=%(installdir)s --enable-gsl --enable-modules=all'
+prebuildopts = 'source sourceme.sh && '
 
 sanity_check_paths = {
     'files': ['bin/plumed', 'lib/libplumedKernel.%s' % SHLIB_EXT, 'lib/libplumed.%s' % SHLIB_EXT],
