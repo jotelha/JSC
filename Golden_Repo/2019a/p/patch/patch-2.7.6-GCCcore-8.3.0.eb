@@ -1,0 +1,28 @@
+# This file is part of JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+easyblock = 'ConfigureMake'
+
+name = 'patch'
+version = '2.7.6'
+
+homepage = 'https://savannah.gnu.org/projects/patch'
+description = """Patch takes a patch file containing a difference listing
+ produced by the diff program and applies those differences to one or more
+ original files, producing patched versions. 
+"""
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+# ftp://ftp.gromacs.org/pub/contrib/xdrfile-1.1.4.tar.gz
+source_urls = ['ftp://ftp.gnu.org/gnu/patch/']
+sources = ['%(name)s-%(version)s.tar.gz']
+
+dependencies = []
+
+runtest = "check"
+
+sanity_check_paths = {
+    'files': [ 'bin/patch' ],
+    'dirs': []
+}
+
+moduleclass = 'tools'

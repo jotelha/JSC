@@ -106,7 +106,9 @@ setenv("EASYBUILD_ROBOT_PATHS", gr_path)
 -- Fail if there are EB related modules loaded
 setenv("EASYBUILD_DETECT_LOADED_MODULES", "error")
 -- Whitelist GC3Pie and EasyBuild itself
-setenv("EASYBUILD_ALLOW_LOADED_MODULES", "GC3Pie,EasyBuild")
+-- setenv("EASYBUILD_ALLOW_LOADED_MODULES", "Stages,GCCcore,Python,GC3Pie,EasyBuild")
+-- generated list with "module -t list 2>&1 | sed -E 's|/.*$||' | xargs echo | tr ' ' ','"
+setenv("EASYBUILD_ALLOW_LOADED_MODULES", "jsctools,devel,Stages,EasyBuild,GCCcore,patch,bzip2,zlib,ncurses,binutils,libreadline,Tcl,SQLite,expat,libpng,freetype,gperf,util-linux,fontconfig,X11,Tk,GMP,XZ,libxml2,libxslt,libffi,libyaml,Java,PostgreSQL,protobuf,gflags,libspatialindex,NASM,libjpeg-turbo,Python,PyYAML,GC3Pie")
 
 -- Limit the number of threads
 local nproc = capture("nproc")
@@ -257,8 +259,7 @@ setenv("EASYBUILD_INSTALLPATH_SOFTWARE", pathJoin(local_stage_path, "software"))
 
 -- Finally we tell EasyBuild to build hierarchical modules using our custom scheme
 setenv("EASYBUILD_INCLUDE_MODULE_NAMING_SCHEMES", pathJoin(custom_mns_path, "\*.py"))
--- setenv("EASYBUILD_MODULE_NAMING_SCHEME", "FlexibleCustomHierarchicalMNS")
-setenv("EASYBUILD_MODULE_NAMING_SCHEME", "CustomHierarchicalMNS")
+setenv("EASYBUILD_MODULE_NAMING_SCHEME", "FlexibleCustomHierarchicalMNS")
 
 -- Used a fixed installation subdir so that we can change naming schemes later if we want
 setenv("EASYBUILD_FIXED_INSTALLDIR_NAMING_SCHEME", "1")
@@ -284,16 +285,16 @@ if not isloaded("GC3Pie") then
                     "partition (using GC3Pie).\n"..
                     "  - "..yellow.."Loading latest GC3Pie module"..normal.."\n"..
                     "  - Submission configured for SLURM (EASYBUILD_JOB_BACKEND_CONFIG)\n"..
-                    "  - Telling EasyBuild to use 32 cores and 1 hour time limit\n"..
+                    "  - Telling EasyBuild to use 48 cores and 1 hour time limit\n"..
                     "    (EASYBUILD_JOB_CORES, EASYBUILD_JOB_MAX_WALLTIME)\n"..
                     yellow.."To access this feature you must add the argument --job to your eb command.\n"..normal..
                     "Please note that execution nodes are *not* connected to the internet so\n"..
                     "software that requires internet access will not build on the back-end.")
     end
---    load("GC3Pie")
+    -- load("GC3Pie")
     setenv("EASYBUILD_JOB_BACKEND", "GC3Pie")
     -- The backend are regular nodes. We have to be careful, some packages might need to be compiled on KNL nodes
-    setenv("EASYBUILD_JOB_BACKEND_CONFIG", "/usr/local/software/FZJ/gc3pie.cfg")
+    -- setenv("EASYBUILD_JOB_BACKEND_CONFIG", "/usr/local/software/FZJ/gc3pie.cfg")
     setenv("EASYBUILD_JOB_CORES", "48")
     setenv("EASYBUILD_JOB_MAX_WALLTIME", "1")
 end

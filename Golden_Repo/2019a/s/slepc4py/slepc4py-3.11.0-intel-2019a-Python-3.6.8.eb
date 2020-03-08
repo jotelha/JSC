@@ -1,0 +1,30 @@
+easyblock = 'PythonPackage'
+
+name = 'slepc4py'
+version = '3.11.0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://bitbucket.org/slepc/slepc4py'
+description = "Python bindings for SLEPc, the Scalable Library for Eigenvalue Problem Computations."
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('SciPy-Stack', '2019a', versionsuffix, ('gcccoremkl', '8.3.0-2019.3.199')),
+    ('mpi4py', '3.0.1', versionsuffix),
+    ('petsc4py', '3.11.0', versionsuffix),
+    ('SLEPc', '3.11.1'),
+]
+
+prebuildopts="CFLAGS='-Wl,--allow-multiple-definition' LDFLAGS='-Wl,--allow-multiple-definition'"
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'math'
