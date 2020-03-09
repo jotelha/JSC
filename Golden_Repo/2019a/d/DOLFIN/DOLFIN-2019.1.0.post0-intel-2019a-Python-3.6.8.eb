@@ -1,0 +1,64 @@
+# easyblock = 'CMakePythonPackage'
+name = 'DOLFIN'
+version = '2019.1.0.post0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://bitbucket.org/fenics-project/dolfin'
+description = """DOLFIN is the C++/Python interface of FEniCS, providing a consistent PSE
+  (Problem Solving Environment) for ordinary and partial differential equations."""
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+toolchainopts = {'usempi': True, 'pic': True, 'packed-linker-options': True, 'openmp': True}
+
+source_urls = ['https://bitbucket.org/fenics-project/dolfin/downloads/']
+sources = [SOURCELOWER_TAR_GZ]
+
+builddependencies = [
+    ('CMake', '3.14.0'), # JSC
+    ('pkg-config', '0.29.2'), # JSC
+    # ('patchelf', '0.9'),
+    ('pybind11', '2.2.3', versionsuffix), # hfr13 custom
+]
+dependencies = [
+    ('Python', '3.6.8'), #JSC
+    ('Boost', '1.69.0', versionsuffix), # JSC, necessary?
+    ('FFC', '2019.1.0.post0', versionsuffix), # hfr13 custom
+    ('FIAT', '2019.1.0', versionsuffix), # hfr13 custrom
+    ('UFL', '2019.1.0', versionsuffix), # hfr13 custom
+    ('SCOTCH', '6.0.6'), # JSC
+    ('ParMETIS', '4.0.3'), # JSC
+    ('SuiteSparse', '5.4.0', '-METIS-5.1.0'),
+    ('CGAL', '4.13.1', versionsuffix), # JSC
+    ('PETSc', '3.11.1'), # JSC
+    ('SLEPc', '3.11.1'), # JSC
+    ('HDF5', '1.10.5'),
+    # ('Trilinos', '12.12.1', versionsuffix),  # not available
+    ('zlib', '1.2.11'), # JSC
+    ('libxml2', '2.9.9', versionsuffix), # JSC
+    ('Eigen', '3.3.7'), #JSC
+    ('PLY', '3.11', versionsuffix), # hfr 13 custom
+    ('VTK', '8.2.0', versionsuffix), # JSC
+    ('petsc4py', '3.11.0', versionsuffix), # JSC
+    ('slepc4py', '3.11.0', versionsuffix), # hfr13 custom
+    # ('sundials', '4.1.0'), # JSC
+]
+
+# use_pip = True
+
+# demos run as tests fail with 'bad X server connection', skipping for now
+runtest = False
+
+skipsteps = ['sanitycheck']
+moduleclass = 'math'
+
+# Helper file for setting non-default DOLFIN environment variables
+
+# Common Unix variables
+# export LD_LIBRARY_PATH=/p/project/chfr13/common/juwels/easybuild/stages/2019a/software/DOLFIN/2019.1.0.post0-intel-2019a-Python-3.6.8/lib64:$LD_LIBRARY_PATH
+# export PATH=/p/project/chfr13/common/juwels/easybuild/stages/2019a/software/DOLFIN/2019.1.0.post0-intel-2019a-Python-3.6.8/bin:$PATH
+# export PKG_CONFIG_PATH=/p/project/chfr13/common/juwels/easybuild/stages/2019a/software/DOLFIN/2019.1.0.post0-intel-2019a-Python-3.6.8/lib64/pkgconfig:$PKG_CONFIG_PATH
+# export MANPATH=/p/project/chfr13/common/juwels/easybuild/stages/2019a/software/DOLFIN/2019.1.0.post0-intel-2019a-Python-3.6.8/share/man:$MANPATH
+
+# Special Mac variables
+# export DYLD_FRAMEWORK_PATH=/opt/local/Library/Frameworks:$DYLD_FRAMEWORK_PATH
+
