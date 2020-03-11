@@ -1,0 +1,39 @@
+easyblock = 'PythonPackage'
+
+name = 'matscipy'
+version = 'devel'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://github.com/libAtoms/matscipy'
+description = "This repository contains generic Python materials science tools built around the Atomic Simulation Environment (ASE)."
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+# source_urls = ['https://bitbucket.org/fenics-project/ffc/downloads/']
+# sources = [SOURCELOWER_TAR_GZ]
+sources = [{
+    'filename': 'matscipy-devel.tar.gz',
+    'git_config': {
+        'url': 'https://github.com/jotelha',
+        'repo_name': 'matscipy',
+        'tag': 'cli',
+    },
+}]
+
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('SciPy-Stack', '2019a', versionsuffix, ('gcccoremkl', '8.3.0-2019.3.199')),
+    ('DOLFIN', '2019.1.0.post0', versionsuffix),
+    ('ASE', '3.17.0', versionsuffix),
+]
+
+# download_dep_fail = True
+use_pip = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'lib'

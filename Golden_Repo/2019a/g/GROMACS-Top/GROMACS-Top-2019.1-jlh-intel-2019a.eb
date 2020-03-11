@@ -1,0 +1,38 @@
+# This file is part of JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+easyblock = 'CmdCp'
+
+name = 'GROMACS-Top'
+version = '2019.1'
+
+homepage = 'https://github.com/gromacs/gromacs'
+description = "Modified Gromacs 2019.1 top folder including CHARM 26 Jul 17, by Johannes Hörmann"
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+# toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+sources = [{
+    'filename': 'gromacs-top.tar.gz',
+    'git_config': {
+        'url': '/p/project/chfr13/hoermann1/git',
+        'repo_name': 'gromacs',
+        'tag': 'v%(version)s-jlh',
+    },
+}]
+
+dependencies = [ ('GROMACS', '2019.1') ]
+
+build_cmd = None
+cmds_map = [('.*', '')]
+build_cmd = None
+
+# copy folder share/top from source to share/top within module folder
+files_to_copy = [(['share/top'], 'share')]
+
+sanity_check_paths = {
+    'files': ['share/top/README.md'],
+    'dirs': [],
+}
+
+modextravars = {'GMXLIB': '%(installdir)s/share/top' }
+
+moduleclass = 'chem'
