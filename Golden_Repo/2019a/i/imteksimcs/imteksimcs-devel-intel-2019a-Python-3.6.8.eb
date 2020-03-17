@@ -1,0 +1,39 @@
+easyblock = 'PythonPackage'
+
+name = 'imteksimcs'
+version = 'devel'
+versionsuffix = '-Python-%(pyver)s'
+
+options = { 'modulename': 'imteksimcs' }
+
+homepage = 'https://github.com/haddocking/pdb-tools'
+description = "This repository contains a random collection of code snippets for pre- and postprocessing simulation runs with Ovito, ASE and other tools."
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+sources = [{
+    'filename': 'imteksimcs-devel.tar.gz',
+    'git_config': {
+        'url': 'https://github.com/IMTEK-Simulation',
+        'repo_name': 'code-snippets',
+        'tag': '20_cli',
+    },
+}]
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('ParmEd', '3.1.0', versionsuffix),
+    ('GromacsWrapper', '0.8.0', versionsuffix),
+    ('mpi4py', '3.0.1', versionsuffix),
+    ('netcdf4-python', '1.5.0.1', versionsuffix),
+]
+
+download_dep_fail = True
+use_pip = True
+
+sanity_check_paths = {
+    'files': ['bin/extract_thermo.sh'],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'tools'

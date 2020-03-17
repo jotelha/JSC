@@ -1,0 +1,27 @@
+easyblock = 'PythonPackage'
+
+name = 'ParmEd'
+version = '3.1.0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://parmed.github.io/ParmEd/html/index.html'
+description = """ParmEd is a general tool for aiding in investigations of biomolecular
+systems using popular molecular simulation packages, like Amber, CHARMM, and OpenMM
+written in Python."""
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+source_urls = ['https://github.com/ParmEd/ParmEd/archive/']
+sources = ['%(version)s.tar.gz']
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('SciPy-Stack', '2019a', versionsuffix, ('gcccoremkl', '8.3.0-2019.3.199')),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'chem'
