@@ -64,32 +64,42 @@ module load Stages/2019a
 to their `.bashrc` (here for project chfr13).
 
 
-# Custom EasyConfigs (diff to JSC/master, 2020/03/12)
+# Custom EasyConfigs (diff to JSC/master, 2020/03/18)
 
 ```console
 $ git diff --name-status master Golden_Repo/
-A       Golden_Repo/2019a/d/DOLFIN/DOLFIN-2019.1.0.post0-intel-2019a-Python-3.6.8.eb
-A       Golden_Repo/2019a/d/dijitso/dijitso-2019.1.0-intel-2019a-Python-3.6.8.eb
-A       Golden_Repo/2019a/e/EasyBuild/EasyBuild-4.1.1.eb
-A       Golden_Repo/2019a/f/FFC/FFC-2019.1.0.post0-intel-2019a-Python-3.6.8.eb
-A       Golden_Repo/2019a/f/FIAT/FIAT-2019.1.0-intel-2019a-Python-3.6.8.eb
-A       Golden_Repo/2019a/g/GC3Pie/GC3Pie-2.5.0-GCCcore-8.3.0.eb
-A       Golden_Repo/2019a/g/GROMACS-Top/GROMACS-Top-2019.1-jlh-intel-2019a.eb
-A       Golden_Repo/2019a/g/GROMACS-Top/GROMACS-Top-2019.3-jlh-intel-2019a.eb
-A       Golden_Repo/2019a/l/LAMMPS/LAMMPS-24Jan2020-intel-2019a.eb
-A       Golden_Repo/2019a/l/libxdrfile/libxdrfile-1.1.4-iccifort-2019.3.199-GCC-8.3.0.eb
-A       Golden_Repo/2019a/m/MATIO/MATIO-1.5.12-iccifort-2019.3.199-GCC-8.3.0.eb
-A       Golden_Repo/2019a/m/matscipy/matscipy-devel-intel-2019a-Python-3.6.8.eb
-M       Golden_Repo/2019a/p/PLUMED/PLUMED-2.5.3-intel-2019a.eb
-A       Golden_Repo/2019a/p/PLUMED/PLUMED-2.5.3-ld.gold.patch
-A       Golden_Repo/2019a/p/PLY/PLY-3.11-intel-2019a-Python-3.6.8.eb
-A       Golden_Repo/2019a/p/PyYAML/PyYAML-5.1.2-GCCcore-8.3.0-Python-2.7.16.eb
-A       Golden_Repo/2019a/p/packmol/packmol-20.010-iccifort-2019.3.199-GCC-8.3.0.eb
-A       Golden_Repo/2019a/p/patch/patch-2.7.6-GCCcore-8.3.0.eb
-A       Golden_Repo/2019a/p/pdb-tools/pdb-tools-2.0.1-Python-3.6.8.eb
-A       Golden_Repo/2019a/p/pybind11/pybind11-2.2.3-intel-2019a-Python-3.6.8.eb
-A       Golden_Repo/2019a/s/slepc4py/slepc4py-3.11.0-intel-2019a-Python-3.6.8.eb
-A       Golden_Repo/2019a/u/UFL/UFL-2019.1.0-intel-2019a-Python-3.6.8.eb
-A       Golden_Repo/2019a/v/VMD-Plugins/VMD-Plugins-1.9.3-intel-2019a.eb
-A       Golden_Repo/2019a/v/virtualenv/virtualenv-16.7.9-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/d/DOLFIN/DOLFIN-2019.1.0.post0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/d/dijitso/dijitso-2019.1.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/e/EasyBuild/EasyBuild-4.1.1.eb
+A	Golden_Repo/2019a/f/FFC/FFC-2019.1.0.post0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/f/FIAT/FIAT-2019.1.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/f/FireWorks/FireWorks-1.9.5-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/g/GC3Pie/GC3Pie-2.5.0-GCCcore-8.3.0.eb
+A	Golden_Repo/2019a/g/GROMACS-Top/GROMACS-Top-2019.1-jlh-intel-2019a.eb
+A	Golden_Repo/2019a/g/GROMACS-Top/GROMACS-Top-2019.3-jlh-intel-2019a.eb
+A	Golden_Repo/2019a/g/GromacsWrapper/GromacsWrapper-0.8.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/i/igraph/igraph-0.7.1-intel-2019a.eb
+A	Golden_Repo/2019a/i/igraph/igraph-0.8.0-intel-2019a.eb
+A	Golden_Repo/2019a/i/imteksimcs/imteksimcs-devel-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/i/imteksimfw/imteksimfw-0.1.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/i/imteksimfw/imteksimfw-devel-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/l/LAMMPS/LAMMPS-24Jan2020-intel-2019a.eb
+A	Golden_Repo/2019a/l/libxdrfile/libxdrfile-1.1.4-iccifort-2019.3.199-GCC-8.3.0.eb
+A	Golden_Repo/2019a/m/MATIO/MATIO-1.5.12-iccifort-2019.3.199-GCC-8.3.0.eb
+A	Golden_Repo/2019a/m/matscipy/matscipy-devel-intel-2019a-Python-3.6.8.eb
+M	Golden_Repo/2019a/p/PLUMED/PLUMED-2.5.3-intel-2019a.eb
+A	Golden_Repo/2019a/p/PLUMED/PLUMED-2.5.3-ld.gold.patch
+A	Golden_Repo/2019a/p/PLY/PLY-3.11-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/p/ParmEd/ParmEd-3.1.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/p/PyYAML/PyYAML-5.1.2-GCCcore-8.3.0-Python-2.7.16.eb
+A	Golden_Repo/2019a/p/packmol/packmol-20.010-iccifort-2019.3.199-GCC-8.3.0.eb
+A	Golden_Repo/2019a/p/patch/patch-2.7.6-GCCcore-8.3.0.eb
+A	Golden_Repo/2019a/p/pdb-tools/pdb-tools-2.0.1-Python-3.6.8.eb
+A	Golden_Repo/2019a/p/pybind11/pybind11-2.2.3-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/p/python-igraph/python-igraph-0.7.1.post6-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/p/python-igraph/python-igraph-0.8.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/s/slepc4py/slepc4py-3.11.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/u/UFL/UFL-2019.1.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/v/VMD-Plugins/VMD-Plugins-1.9.3-intel-2019a.eb
+A	Golden_Repo/2019a/v/virtualenv/virtualenv-16.7.9-intel-2019a-Python-3.6.8.eb
 ```

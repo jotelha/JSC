@@ -13,8 +13,23 @@ toolchain = {'name': 'intel', 'version': '2019a'}
 dependencies = [
     ('Python', '3.6.8'),
     # ('PyYAML', '5.1.2', versionsuffix),
-    ('python-igraph','0.8.0',versionsuffix)
+    ('python-igraph','0.7.1.post6',versionsuffix) # 0.8.0 not compatible
 ]
+
+# python-igraph 0.8.0 not compatible, leads to error in
+#
+# $ lpad check_wflow -i 24265 -g controlflow
+#
+# Traceback (most recent call last):
+#   File "/p/project/chfr13/common/juwels/easybuild/stages/2019a/software/imteksimfw/0.1.0-intel-2019a-Python-3.6.8/bin/lpad", line 11, in <module>
+#     load_entry_point('FireWorks==1.9.5', 'console_scripts', 'lpad')()
+#   File "/p/project/chfr13/common/juwels/easybuild/stages/2019a/software/FireWorks/1.9.5-intel-2019a-Python-3.6.8/lib/python3.6/site-packages/FireWorks-1.9.5-py3.6.egg/fireworks/scripts/lpad_run.py", line 1209, in lpad
+#     args.func(args)
+#   File "/p/project/chfr13/common/juwels/easybuild/stages/2019a/software/FireWorks/1.9.5-intel-2019a-Python-3.6.8/lib/python3.6/site-packages/FireWorks-1.9.5-py3.6.egg/fireworks/scripts/lpad_run.py", line 217, in check_wf
+#     dagf.to_dot(args.dot_file, view=args.view)
+#   File "/p/project/chfr13/common/juwels/easybuild/stages/2019a/software/FireWorks/1.9.5-intel-2019a-Python-3.6.8/lib/python3.6/site-packages/FireWorks-1.9.5-py3.6.egg/fireworks/utilities/dagflow.py", line 292, in to_dot
+#     graph = self.copy()
+# TypeError: __init__() got an unexpected keyword argument '__ptr'
 
 # this is a bundle of Python packages
 exts_defaultclass = 'PythonPackage'
