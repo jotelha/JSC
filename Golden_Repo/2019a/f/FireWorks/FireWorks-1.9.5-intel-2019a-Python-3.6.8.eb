@@ -1,0 +1,113 @@
+easyblock = 'Bundle'
+
+name = 'FireWorks'
+version = '1.9.5'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://materialsproject.github.io/fireworks/'
+description = """FireWorks is intended to be a friendly workflow software that
+ is easy to get started with, but flexible enough to handle complicated use cases."""
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+dependencies = [
+    ('Python', '3.6.8'),
+    # ('PyYAML', '5.1.2', versionsuffix),
+    ('python-igraph','0.8.0',versionsuffix)
+]
+
+# this is a bundle of Python packages
+exts_defaultclass = 'PythonPackage'
+
+# https://github.com/materialsproject/fireworks/blob/v1.9.5/requirements.txt
+# ruamel.yaml==0.16.5
+# pymongo==3.9.0
+# Jinja2==2.10.3          (2.10 in JSC 2019a/Python-3.6.8)
+# six==1.13.0             (1.12.0 in JSC 2019a/Python-3.6.8)
+# monty==3.0.2
+# python-dateutil==2.8.1  (2.8.0 in JSC 2019a/Python-3.6.8)
+# tabulate==0.8.5
+# flask==1.1.1            (1.0.2 in JSC 2019a/Python-3.6.8)
+# flask-paginate==0.5.5
+# gunicorn==20.0.0
+# tqdm==4.38.0
+
+# optional dependencies
+# paramiko (2.4.2 in JSC 2019a/python-3.6.8)
+# fabric   # (only needed if using daemon mode of qlaunch!)
+# requests (2.21.0 in JSC 2019a/Python-3.6.8)
+
+# recommended by 3rd party
+# https://git.scc.kit.edu/jk7683/grk2450-fireworks-tutorial/-/blob/master/docs/setup.rst
+# pjson
+# python-igraph
+
+# 20200318 in clean venv:
+# $ pip install --upgrade pip
+# $ pip install fireworks
+# $ pip freeze 
+# click==7.1.1            (7.0 in JSC 2019a/Python-3.6.8)
+# FireWorks==1.9.5
+# Flask==1.1.1            (1.0.2 in JSC 2019a/Python-3.6.8)
+# flask-paginate==0.5.5
+# gunicorn==20.0.4
+# itsdangerous==1.1.0     (1.1.0 in JSC 2019a/Python-3.6.8)
+# Jinja2==2.11.1          (2.10 in JSC 2019a/Python-3.6.8)
+# MarkupSafe==1.1.1       (1.1.1 in JSC 2019a/Python-3.6.8)
+# monty==3.0.2
+# pkg-resources==0.0.0
+# pymongo==3.10.1
+# python-dateutil==2.8.1  (2.8.0 in JSC 2019a/Python-3.6.8)
+# ruamel.yaml==0.16.10
+# ruamel.yaml.clib==0.2.0
+# six==1.14.0             (1.12.0 in JSC 2019a/Python-3.6.8)
+# tabulate==0.8.6
+# tqdm==4.43.0
+# Werkzeug==1.0.0         (0.15.1 in JSC 2019a/Python-3.6.8)
+
+exts_list = [
+    # https://pypi.python.org/packages/source/f/flask-paginate/flask-paginate-0.5.5.tar.gz does not exist
+    ('flask-paginate', '0.5.0', { 
+        'source_urls': ['https://pypi.python.org/packages/source/f/flask-paginate/'],
+        # 'source_tmpl': 'flask-paginate-%(version)s.tar.gz',
+        'modulename': 'flask_paginate',
+    }),
+    ('gunicorn', '20.0.4', {
+        'source_urls': ['https://pypi.python.org/packages/source/g/gunicorn/'],
+    }),
+    ('monty', '3.0.2', {
+        'source_urls': ['https://pypi.python.org/packages/source/m/monty/'],
+    }),
+    ('pymongo', '3.10.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/pymongo/'],
+        'check_ldshared': True,
+    }),
+    ('ruamel.yaml.clib', '0.2.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/r/ruamel.yaml.clib/'],
+        'use_pip': True, # requires pip installation
+        'check_ldshared': True, # links library
+    }),
+    ('ruamel.yaml', '0.16.10', {
+        'source_urls': ['https://pypi.python.org/packages/source/r/ruamel.yaml/'],
+        'use_pip': True, # requires pip installation
+        'check_ldshared': True, # links library
+    }),
+    ('tabulate', '0.8.6', {
+        'source_urls': ['https://pypi.python.org/packages/source/t/tabulate/'],
+    }),
+    ('tqdm', '4.43.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/t/tqdm/'],
+    }),
+    ('FireWorks', version, {
+        'source_urls': ['https://pypi.python.org/packages/source/F/FireWorks/'],
+    }),
+]
+
+modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages']
+}
+
+moduleclass = 'tools'

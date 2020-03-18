@@ -1,0 +1,35 @@
+easyblock = 'PythonPackage'
+
+name = 'imteksimfw'
+version = 'devel'
+versionsuffix = '-Python-%(pyver)s'
+
+options = { 'modulename': 'imteksimfw' }
+
+homepage = 'https://github.com/IMTEK-Simulation/imteksimfw'
+description = "Custom FireWorks extensions"
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+sources = [{
+    'filename': 'imteksimfw-devel.tar.gz',
+    'git_config': {
+        'url': 'https://github.com/IMTEK-Simulation',
+        'repo_name': 'imteksimfw',
+        'tag': 'master',
+    },
+}]
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('FireWorks', '1.9.5', versionsuffix),
+]
+
+download_dep_fail = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'tools'
