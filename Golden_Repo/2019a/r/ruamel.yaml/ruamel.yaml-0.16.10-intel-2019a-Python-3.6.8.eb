@@ -1,0 +1,60 @@
+easyblock = 'Bundle'
+
+name = 'ruamel.yaml'
+version = '0.16.10'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://yaml.readthedocs.io'
+description = "ruamel.yaml is a YAML 1.2 loader/dumper package for Python."
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+dependencies = [
+    ('Python', '3.6.8'),
+]
+
+# this is a bundle of Python packages
+exts_defaultclass = 'PythonPackage'
+
+exts_list = [
+    ('ruamel.yaml.clib', '0.2.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/r/ruamel.yaml.clib/'],
+        'use_pip': True, # requires pip installation
+        'check_ldshared': True, # links library
+        'download_dep_fail': True,
+        'modulename': 'ruamel.yaml',  # no own importable module
+    }),
+    ('ruamel.yaml', '0.16.10', {
+        'source_urls': ['https://pypi.python.org/packages/source/r/ruamel.yaml/'],
+        'use_pip': True, # requires pip installation
+        'use_pip_extras': 'jinja2',
+        'check_ldshared': True, # links library
+        'download_dep_fail': True,
+    }),
+    ('ruamel.std.argparse', '0.8.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/r/ruamel.std.argparse/'],
+        'use_pip': True, # requires pip installation
+        'download_dep_fail': True,
+    }),
+    ('ruamel.yaml.convert', '0.3.2', {
+        'source_urls': ['https://pypi.python.org/packages/source/r/ruamel.yaml.convert/'],
+        'use_pip': True, # requires pip installation
+        'download_dep_fail': True,
+    }),
+    ('ruamel.yaml.cmd', '0.5.5', {
+        'source_urls': ['https://pypi.python.org/packages/source/r/ruamel.yaml.cmd/'],
+        'use_pip': True, # requires pip installation
+        'download_dep_fail': True,
+    }),
+]
+
+modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
+
+sanity_pip_check = True
+
+sanity_check_paths = {
+    'files': ['bin/yaml'],
+    'dirs': ['lib/python%(pyshortver)s/site-packages']
+}
+
+moduleclass = 'tools'
