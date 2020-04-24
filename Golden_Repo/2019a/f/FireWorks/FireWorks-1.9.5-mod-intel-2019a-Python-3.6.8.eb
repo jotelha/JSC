@@ -1,4 +1,4 @@
-easyblock = 'Bundle'
+easyblock = 'PythonBundle'
 
 name = 'FireWorks'
 version = '1.9.5-mod'
@@ -21,6 +21,8 @@ dependencies = [
 
 # this is a bundle of Python packages
 exts_defaultclass = 'PythonPackage'
+use_pip=True
+download_dep_fail=True
 
 exts_list = [
     ('flask-paginate', '0.5.0', { 

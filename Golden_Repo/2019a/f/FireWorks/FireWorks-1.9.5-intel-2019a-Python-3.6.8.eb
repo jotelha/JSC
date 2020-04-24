@@ -1,4 +1,4 @@
-easyblock = 'Bundle'
+easyblock = 'PythonBundle'
 
 name = 'FireWorks'
 version = '1.9.5'
@@ -12,8 +12,8 @@ toolchain = {'name': 'intel', 'version': '2019a'}
 
 dependencies = [
     ('Python', '3.6.8'),
-    # ('PyYAML', '5.1.2', versionsuffix),
-    ('python-igraph','0.7.1.post6',versionsuffix) # 0.8.0 not compatible
+    ('python-igraph', '0.7.1.post6', versionsuffix),  # 0.8.0 not compatible
+    ('ruamel.yaml', '0.16.10', versionsuffix),
 ]
 
 # python-igraph 0.8.0 not compatible, leads to error in
@@ -31,8 +31,10 @@ dependencies = [
 #     graph = self.copy()
 # TypeError: __init__() got an unexpected keyword argument '__ptr'
 
+use_pip = True
 # this is a bundle of Python packages
 exts_defaultclass = 'PythonPackage'
+exts_default_options = { 'use_pip': True }
 
 # https://github.com/materialsproject/fireworks/blob/v1.9.5/requirements.txt
 # ruamel.yaml==0.16.5
@@ -81,10 +83,8 @@ exts_defaultclass = 'PythonPackage'
 # Werkzeug==1.0.0         (0.15.1 in JSC 2019a/Python-3.6.8)
 
 exts_list = [
-    # https://pypi.python.org/packages/source/f/flask-paginate/flask-paginate-0.5.5.tar.gz does not exist
     ('flask-paginate', '0.5.0', { 
         'source_urls': ['https://pypi.python.org/packages/source/f/flask-paginate/'],
-        # 'source_tmpl': 'flask-paginate-%(version)s.tar.gz',
         'modulename': 'flask_paginate',
     }),
     ('gunicorn', '20.0.4', {
@@ -96,16 +96,6 @@ exts_list = [
     ('pymongo', '3.10.1', {
         'source_urls': ['https://pypi.python.org/packages/source/p/pymongo/'],
         'check_ldshared': True,
-    }),
-    ('ruamel.yaml.clib', '0.2.0', {
-        'source_urls': ['https://pypi.python.org/packages/source/r/ruamel.yaml.clib/'],
-        'use_pip': True, # requires pip installation
-        'check_ldshared': True, # links library
-    }),
-    ('ruamel.yaml', '0.16.10', {
-        'source_urls': ['https://pypi.python.org/packages/source/r/ruamel.yaml/'],
-        'use_pip': True, # requires pip installation
-        'check_ldshared': True, # links library
     }),
     ('tabulate', '0.8.6', {
         'source_urls': ['https://pypi.python.org/packages/source/t/tabulate/'],

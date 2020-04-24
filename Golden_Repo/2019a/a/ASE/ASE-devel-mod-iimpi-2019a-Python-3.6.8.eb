@@ -1,0 +1,37 @@
+# This file is part of JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+easyblock = 'PythonPackage'
+
+name = 'ASE'
+version = 'devel-mod'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://wiki.fysik.dtu.dk/ase/'
+description = """Forked ASE development master at https://gitlab.com/jotelha1/ase."""
+
+toolchain = {'name': 'iimpi', 'version': '2019a'}
+
+sources = [{
+    'filename': '%(name)s-%(version)s.tar.gz',
+    'git_config': {
+        'url': 'https://gitlab.com/jotelha1',
+        'repo_name': 'ase',
+        'tag': '2020_lammpsdata_molecule_id_fix',
+    }
+}]
+
+use_pip = True
+download_dep_fail = True
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('SciPy-Stack', '2019a', versionsuffix, ('gcccoremkl', '8.3.0-2019.3.199')),
+]
+
+sanity_check_paths = {
+    'files': ['bin/ase-build', 'bin/ase-db', 'bin/ase-gui', 'bin/ase-info', 'bin/ase-run'],
+    'dirs': [''],
+}
+
+# modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
+
+moduleclass = 'chem'

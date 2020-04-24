@@ -16,7 +16,6 @@ sources = [SOURCELOWER_TAR_GZ]
 builddependencies = [
     ('CMake', '3.14.0'), # JSC
     ('pkg-config', '0.29.2'), # JSC
-    # ('patchelf', '0.9'),
     ('pybind11', '2.2.3', versionsuffix), # hfr13 custom
 ]
 dependencies = [

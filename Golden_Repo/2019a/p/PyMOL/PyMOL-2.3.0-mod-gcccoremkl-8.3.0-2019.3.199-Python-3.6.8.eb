@@ -1,0 +1,51 @@
+# This file is part of JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+easyblock = 'PythonPackage'
+
+name = 'PyMOL'
+version = '2.3.0-mod'
+versionsuffix = '-Python-%(pyver)s'
+# gccver = '8.3.0'
+
+homepage = "http://www.pymol.org"
+description = """PyMOL is a user-sponsored molecular visualization system on an open-source foundation."""
+
+sources = [{
+  'source_urls': ['https://github.com/schrodinger/pymol-open-source/archive'],
+  'filename': 'v2.3.0.tar.gz',
+}]
+
+toolchain = {'name': 'gcccoremkl', 'version': '8.3.0-2019.3.199'}
+toolchainopts = {'pic': True}
+
+
+check_ldshared = True
+configopts = '--use-msgpackc=no'
+
+dependencies = [
+    ('Python','3.6.8'),
+    ('Pmw', '2.0.1', versionsuffix),
+    ('X11','20190311'),
+    ('freeglut','3.0.0'),
+    ('freetype','2.10.0'),
+    # ('netCDF','4.6.3', '-serial', ('GCC', gccver)),
+    ('libpng','1.6.36'),
+    ('SciPy-Stack','2019a', versionsuffix),
+    ('GLEW','2.1.0'),
+    ('GLM','0.9.9.5'),
+    ('VirtualGL','2.6.1'),
+    ('nvidia','418.87.00','', True),
+]
+
+# common_opts = {
+#    'req_py_majver': '3',
+#    'req_py_minver': '0'
+# }
+
+download_dep_fail = True
+
+sanity_check_paths = {
+    'files': ['bin/pymol'],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'vis'

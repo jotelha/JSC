@@ -1,7 +1,7 @@
 easyblock = 'PythonPackage'
 
 name = 'imteksimcs'
-version = 'devel'
+version = 'devel-local'
 versionsuffix = '-Python-%(pyver)s'
 
 options = { 'modulename': 'imteksimcs' }
@@ -14,9 +14,9 @@ toolchain = {'name': 'intel', 'version': '2019a'}
 sources = [{
     'filename': 'imteksimcs-devel.tar.gz',
     'git_config': {
-        'url': 'https://github.com/IMTEK-Simulation',
+        'url': '/p/project/chfr13/hoermann1/git',
         'repo_name': 'code-snippets',
-        'tag': '20_cli',
+        'tag': 'master',
     },
 }]
 
@@ -30,6 +30,7 @@ dependencies = [
 
 download_dep_fail = True
 use_pip = True
+# use_pip_editable = True
 
 sanity_check_paths = {
     'files': [],

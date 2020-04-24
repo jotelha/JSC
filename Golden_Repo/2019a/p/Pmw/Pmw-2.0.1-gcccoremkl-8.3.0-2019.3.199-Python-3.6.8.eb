@@ -1,0 +1,34 @@
+# This file is part of JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+easyblock = 'PythonPackage'
+
+name = 'Pmw'
+version = '2.0.1'
+versionsuffix = '-Python-%(pyver)s'
+options = {'modulename': 'Pmw'}
+
+homepage = "https://sourceforge.net/projects/pmw"
+description = """A toolkit for building high-level compound widgets in Python using the Tkinter module. It contains a set of flexible and extensible megawidgets, including notebooks, comboboxes, selection widgets, paned widgets, scrolled widgets and dialog windows."""
+
+toolchain = {'name': 'gcccoremkl', 'version': '8.3.0-2019.3.199'}
+# toolchainopts = {'pic': True}
+
+source_urls = [PYPI_SOURCE] 
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [
+    ('Python','3.6.8'),
+]
+
+# this is a bundle of Python packages
+# exts_defaultclass = 'PythonPackage'
+# exts_filter = ('python -c "import %(ext_name)s"', '')
+download_dep_fail = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+# modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
+
+moduleclass = 'vis'
