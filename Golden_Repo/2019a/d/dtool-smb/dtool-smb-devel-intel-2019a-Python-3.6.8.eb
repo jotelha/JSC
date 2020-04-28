@@ -1,0 +1,38 @@
+easyblock = 'PythonPackage'
+
+name = 'dtool-smb'
+version = 'devel'
+versionsuffix = '-Python-%(pyver)s'
+
+options = { 'modulename': 'dtool_smb' }
+
+homepage = 'https://github.com/IMTEK-Simulation/dtool-smb'
+description = "SMB storage broker for dtool"
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+sources = [{
+    'filename': '%(name)s-%(version)s.tar.gz',
+    'git_config': {
+        'url': 'https://github.com/IMTEK-Simulation',
+        'repo_name': 'dtool-smb',
+        'tag': 'master',
+    }
+}]
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('dtool', '3.25.0', versionsuffix),
+    ('pysmb', '1.1.28', versionsuffix),
+]
+
+use_pip = True
+download_dep_fail = True
+sanity_pip_check = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'lib'

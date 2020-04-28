@@ -1,0 +1,27 @@
+easyblock = 'PythonPackage'
+
+name = 'parse'
+version = '1.15.0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://github.com/r1chardj0n3s/parse'
+description = "Parse strings using a specification based on the Python format() syntax."
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [
+    ('Python', '3.6.8'),
+]
+
+use_pip = True
+download_dep_fail = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'lib'
