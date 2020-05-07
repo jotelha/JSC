@@ -1,11 +1,12 @@
 easyblock = 'PythonPackage'
 
-name = 'click-plugins'
-version = '1.1.1'
+name = 'mock-ssh-server'
+version = '0.8.1'
 versionsuffix = '-Python-%(pyver)s'
+options = {'modulename': 'mockssh'}
 
-homepage = 'https://github.com/click-contrib/click-plugins'
-description = "An extension module for click to register external CLI commands via setuptools entry-points."
+homepage = 'https://github.com/carletes/mock-ssh-server'
+description = "mock-ssh-server packs a Python context manager that implements an SSH server for testing purposes. It is built on top of paramiko, so it does not need OpenSSH binaries to be installed."
 
 toolchain = {'name': 'intel', 'version': '2019a'}
 
@@ -14,7 +15,6 @@ sources = [SOURCE_TAR_GZ]
 
 dependencies = [
     ('Python', '3.6.8'),
-    ('SciPy-Stack', '2019a', versionsuffix, ('gcccoremkl', '8.3.0-2019.3.199')),  # for numpy
 ]
 
 use_pip = True

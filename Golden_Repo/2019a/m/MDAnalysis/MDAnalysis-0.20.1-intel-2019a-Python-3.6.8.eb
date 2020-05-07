@@ -1,0 +1,45 @@
+easyblock = 'PythonBundle'
+
+name = 'MDAnalysis'
+version = '0.20.1'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://www.mdanalysis.org/'
+description = """MDAnalysis is an object-oriented Python library to analyze
+  trajectories from molecular dynamics (MD) simulations in many popular
+  formats. It can write most of these formats, too, together with atom 
+  selections suitable for visualization or native analysis tools."""
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('Biopython', '1.76', versionsuffix),    
+    ('gsd', '2.1.1', versionsuffix),    
+    ('joblib', '0.14.1', versionsuffix),    
+    ('mmtf-python', '1.1.2', versionsuffix),    
+]
+
+check_ldshared = True
+
+use_pip = True
+download_dep_fail = True
+sanity_pip_check = True
+
+exts_list = [
+    ('GridDataFormats', '0.5.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/m/griddataformats'],
+        'modulename': 'gridData',
+    }),
+    ('MDAnalysis', '0.20.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/m/mdanalysis'],
+        'modulename': 'MDAnalysis',
+    }),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'chem'

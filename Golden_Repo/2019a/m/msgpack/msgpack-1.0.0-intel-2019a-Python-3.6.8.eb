@@ -1,11 +1,11 @@
 easyblock = 'PythonPackage'
 
-name = 'click-plugins'
-version = '1.1.1'
+name = 'msgpack'
+version = '1.0.0'
 versionsuffix = '-Python-%(pyver)s'
 
-homepage = 'https://github.com/click-contrib/click-plugins'
-description = "An extension module for click to register external CLI commands via setuptools entry-points."
+homepage = 'https://msgpack.org/'
+description = "Joblib is a set of tools to provide lightweight pipelining in Python"
 
 toolchain = {'name': 'intel', 'version': '2019a'}
 
@@ -14,11 +14,11 @@ sources = [SOURCE_TAR_GZ]
 
 dependencies = [
     ('Python', '3.6.8'),
-    ('SciPy-Stack', '2019a', versionsuffix, ('gcccoremkl', '8.3.0-2019.3.199')),  # for numpy
 ]
 
 use_pip = True
 download_dep_fail = True
+sanity_pip_check = True
 
 sanity_check_paths = {
     'files': [],
