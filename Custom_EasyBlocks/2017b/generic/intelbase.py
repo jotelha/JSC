@@ -50,7 +50,7 @@ from easybuild.tools.build_log import EasyBuildError
 from easybuild.tools.filetools import find_flexlm_license, read_file
 from easybuild.tools.run import run_cmd
 
-from vsc.utils import fancylogger
+from easybuild.base import fancylogger
 _log = fancylogger.getLogger('generic.intelbase')
 
 

@@ -37,8 +37,8 @@ import re
 import sys
 import tempfile
 from distutils.version import LooseVersion
-from vsc.utils import fancylogger
-from vsc.utils.missing import nub
+from easybuild.base import fancylogger
+from easybuild.tools.utilities import nub
 
 import easybuild.tools.environment as env
 from easybuild.easyblocks.python import EXTS_FILTER_PYTHON_PACKAGES
