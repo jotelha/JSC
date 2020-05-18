@@ -5,22 +5,22 @@ name = 'intel-para'
 version = '2019a'
 versionsuffix = ''
 
-intelversion = '2019.3.199'
-intelsuffix = '-GCC-8.3.0'
+local_intelversion = '2019.3.199'
+local_intelsuffix = '-GCC-8.3.0'
 
 homepage = ''
 description = """intel-para provides Intel C/C++ and Fortran compilers, ParaStationMPI & Intel MKL.
 """
 
 
-toolchain = {'version': '', 'name': 'dummy'}
+toolchain = SYSTEM
 
 dependencies = [
-    ('iccifort', intelversion, intelsuffix),
-    ('icc', intelversion, intelsuffix),
-    ('ifort', intelversion, intelsuffix),
-    ('psmpi', '5.2.2-1', versionsuffix, ('iccifort', intelversion+intelsuffix)),
-    ('imkl', intelversion, versionsuffix, ('ipsmpi', version)),
+    ('iccifort', local_intelversion, local_intelsuffix),
+    ('icc', local_intelversion, local_intelsuffix),
+    ('ifort', local_intelversion, local_intelsuffix),
+    ('psmpi', '5.2.2-1', versionsuffix, ('iccifort', local_intelversion+local_intelsuffix)),
+    ('imkl', local_intelversion, versionsuffix, ('ipsmpi', version)),
 ]
 
 

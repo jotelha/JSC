@@ -13,7 +13,7 @@ manipulation and analysis, in the style of the excellent Polygon object in the S
 
 toolchain = {'name': 'gcccoremkl', 'version': '8.3.0-2019.3.199'}
 
-common_opts = {
+local_common_opts = {
     'req_py_majver': '2',
     'req_py_minver': '0'
 }
@@ -30,11 +30,11 @@ dependencies = [
 
 exts_list = [
     # networkx 2.3 needs python 3
-    ('networkx', '2.2', dict(common_opts.items() + [
+    ('networkx', '2.2', dict(local_common_opts.items() + [
         ('source_urls', ['https://pypi.python.org/packages/source/n/networkx']),
         ('source_tmpl', '%(name)s-%(version)s.zip')
     ])),
-    ('trimesh', version, dict(common_opts.items() + [
+    ('trimesh', version, dict(local_common_opts.items() + [
         ('source_urls', ['https://pypi.python.org/packages/source/t/trimesh']),
     ])),
 ]

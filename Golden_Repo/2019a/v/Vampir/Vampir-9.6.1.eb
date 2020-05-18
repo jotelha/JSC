@@ -11,7 +11,7 @@ easyblock='Binary'
 
 name = "Vampir"
 version = "9.6.1"
-archsuffix = "-linux-x86_64"
+local_archsuffix = "-linux-x86_64"
 
 homepage = 'http://www.vampir.eu'
 description = """The VAMPIR software tool provides an easy-to-use framework that enables
@@ -21,9 +21,9 @@ description = """The VAMPIR software tool provides an easy-to-use framework that
 """
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
-sources = ['vampir-%s%s-setup.bin' % (version, archsuffix)]
+sources = ['vampir-%s%s-setup.bin' % (version, local_archsuffix)]
 
 install_cmd = './vampir-%(version)s-linux-x86_64-setup.bin --silent --instdir=%(installdir)s' 
 

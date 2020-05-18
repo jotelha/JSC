@@ -9,16 +9,16 @@ homepage = '(none)'
 description = """GCC based compiler toolchain, including CUDA and MVAPICH2 for CUDA-aware MPI support."""
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
-compname = 'GCC'
-compver = '8.3.0'
-comp = (compname, compver)
+local_compname = 'GCC'
+local_compver = '8.3.0'
+local_comp = (local_compname, local_compver)
 
 dependencies = [
-    ('GCC', compver),
+    ('GCC', local_compver),
     ('CUDA', '10.1.105', '', True),
-    ('MVAPICH2', '2.3.2', '%s' % versionsuffix, comp),
+    ('MVAPICH2', '2.3.2', '%s' % versionsuffix, local_comp),
 ]
 
 moduleclass = 'toolchain'

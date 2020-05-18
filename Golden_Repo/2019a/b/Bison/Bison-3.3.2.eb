@@ -10,7 +10,7 @@ into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser 
 """
 
 
-toolchain = {'name': 'dummy', 'version': ''}
+toolchain = SYSTEM
 
 sources = [SOURCELOWER_TAR_GZ]
 source_urls = [GNU_SOURCE]

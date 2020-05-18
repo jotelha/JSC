@@ -42,13 +42,13 @@ toolchain = {'name': 'ipsmpi', 'version': '2019a'}
 
 sources = ['ftp://ftp.mcs.anl.gov/pub/darshan/releases/darshan-%s.tar.gz' % version]
 
-subpath = 'darshan-runtime'
-preconfigopts = 'cd %s;' % subpath
+local_subpath = 'darshan-runtime'
+preconfigopts = 'cd %s;' % local_subpath
 configopts = '--with-mem-align=8 --with-log-path-by-env=DARSHAN_LOG_PATH --with-jobid-env=SLURM_JOBID CC=mpicc'
 
-prebuildopts = 'cd %s;' % subpath
+prebuildopts = 'cd %s;' % local_subpath
 
-preinstallopts = 'cd %s;' % subpath
+preinstallopts = 'cd %s;' % local_subpath
 
 sanity_check_paths = {
     'files': ["lib/libdarshan.so"],

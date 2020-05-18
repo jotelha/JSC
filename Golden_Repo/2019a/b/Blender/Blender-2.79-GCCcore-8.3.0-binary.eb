@@ -14,8 +14,8 @@ editing and game creation.
 
 
 toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
-pkg_name = '%(namelower)s-%(version)s-linux-glibc219-x86_64'
-sources = ['%s.tar.bz2' % pkg_name]
+local_pkg_name = '%(namelower)s-%(version)s-linux-glibc219-x86_64'
+sources = ['%s.tar.bz2' % local_pkg_name]
 source_urls = ['http://ftp.nluug.nl/pub/graphics/blender/release/%(name)s%(version)s/']
 
 dependencies = [
@@ -24,7 +24,7 @@ dependencies = [
     ('VirtualGL', '2.6.1'),
 ]
 
-preinstallopts = 'rm %%(builddir)s/%s/lib/libGL.* && rm %%(builddir)s/%s/lib/libGLU.*' % (pkg_name, pkg_name)
+preinstallopts = 'rm %%(builddir)s/%s/lib/libGL.* && rm %%(builddir)s/%s/lib/libGLU.*' % (local_pkg_name, local_pkg_name)
 
 modextravars = {
     'CUDA_VISIBLE_DEVICES': '0,1,2,3'

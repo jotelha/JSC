@@ -9,7 +9,7 @@ description = """Popt is a C library for parsing command line parameters.
 """
 
 
-toolchain = {'version': '', 'name': 'dummy'}
+toolchain = SYSTEM
 
 sources = [SOURCE_TAR_GZ]
 source_urls = ['http://rpm5.org/files/%(name)s/']

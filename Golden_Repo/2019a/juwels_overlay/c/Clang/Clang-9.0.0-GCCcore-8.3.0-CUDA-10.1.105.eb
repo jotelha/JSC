@@ -36,15 +36,15 @@ sources = [
 #    'c2d6de9629f7c072ac20ada776374e9e3168142f20a46cdb9d6df973922b07cd',  # libcxxabi-8.0.0.src.tar.xz
 #]
 
-gccver = '8.3.0'
-binutilsver = '2.32'
-cudaver = '10.1.105'
-versionsuffix = '-CUDA-%s' % cudaver
+local_gccver = '8.3.0'
+local_binutilsver = '2.32'
+local_cudaver = '10.1.105'
+versionsuffix = '-CUDA-%s' % local_cudaver
 
 dependencies = [
-    ('binutils', binutilsver, '', ('GCCcore', gccver)),
+    ('binutils', local_binutilsver, '', ('GCCcore', local_gccver)),
     ('GMP', '6.1.2'),
-    ('CUDA', cudaver, '', True),
+    ('CUDA', local_cudaver, '', True),
 ]
 
 builddependencies = [

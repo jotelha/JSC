@@ -3,8 +3,8 @@ easyblock = 'ConfigureMake'
 
 name = 'NCCL'
 version = '2.4.6-1'
-cudaver = '10.1.105'
-versionsuffix = '-CUDA-%s' % cudaver
+local_cudaver = '10.1.105'
+versionsuffix = '-CUDA-%s' % local_cudaver
 
 homepage = 'https://developer.nvidia.com/nccl'
 description = """The NVIDIA Collective Communications Library (NCCL) implements multi-GPU and multi-node collective
@@ -21,7 +21,7 @@ builddependencies = [
 ]
 
 dependencies = [
-    ('CUDA', cudaver, '', True)
+    ('CUDA', local_cudaver, '', True)
 ]
 
 skipsteps = ['configure']

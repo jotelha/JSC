@@ -44,7 +44,7 @@ osdependencies = [('openssl-devel', 'libssl-dev', 'libopenssl-devel')]
 
 exts_download_dep_fail = True
 
-grakover = '3.99.9'
+local_grakover = '3.99.9'
 
 # order is important!
 exts_list = [
@@ -407,7 +407,7 @@ exts_list = [
     ('argcomplete', '1.9.5', {
         'source_urls': ['https://pypi.python.org/packages/source/a/argcomplete'],
     }),
-    ('grako', grakover, {
+    ('grako', local_grakover, {
         'source_urls': ['https://pypi.python.org/packages/source/g/grako'],
         'source_tmpl': '%(name)s-%(version)s.zip',
     }),
@@ -434,12 +434,12 @@ exts_list = [
     }),
 ]
 
-grako_egginfo_path = '%%(installdir)s/lib/python3.6/site-packages/grako-%s-py3.6-linux-x86_64.egg/EGG-INFO/' % grakover
+local_grako_egginfo_path = '%%(installdir)s/lib/python3.6/site-packages/grako-%s-py3.6-linux-x86_64.egg/EGG-INFO/' % local_grakover
 
 postinstallcmds = [
-    'chmod o+r %s/*.txt' % grako_egginfo_path,
-    'chmod o+r %s/not-zip-safe' % grako_egginfo_path,
-    'chmod o+r %s/PKG-INFO' % grako_egginfo_path,
+    'chmod o+r %s/*.txt' % local_grako_egginfo_path,
+    'chmod o+r %s/not-zip-safe' % local_grako_egginfo_path,
+    'chmod o+r %s/PKG-INFO' % local_grako_egginfo_path,
     'ln -s %(installdir)s/bin/python3-config %(installdir)s/bin/python-config'
 ]
 

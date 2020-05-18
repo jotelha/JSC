@@ -14,11 +14,11 @@ description = """Paraview is a scientific parallel visualizer.
 toolchain = {'name': 'gpsmkl', 'version': '2019a'}
 toolchainopts = {'pic': True, 'usempi': True}
 
-download_suffix_src = 'download.php?submit=Download&version=v%(version_major_minor)s&type=source&os=all&downloadFile='
-download_suffix_dat = 'download.php?submit=Download&version=v%(version_major_minor)s&type=data&os=all&downloadFile='
+local_download_suffix_src = 'download.php?submit=Download&version=v%(version_major_minor)s&type=source&os=all&downloadFile='
+local_download_suffix_dat = 'download.php?submit=Download&version=v%(version_major_minor)s&type=data&os=all&downloadFile='
 
-source_urls = [ ('http://www.paraview.org/paraview-downloads/%s' % download_suffix_src),
-                ('http://www.paraview.org/paraview-downloads/%s' % download_suffix_dat),
+source_urls = [ ('http://www.paraview.org/paraview-downloads/%s' % local_download_suffix_src),
+                ('http://www.paraview.org/paraview-downloads/%s' % local_download_suffix_dat),
               ]
 sources = [ ("ParaView-v%(version)s.tar.gz"),
             ("ParaViewData-v%(version)s.tar.gz"),

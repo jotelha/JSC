@@ -10,7 +10,7 @@ description = """Git Large File Storage (LFS) replaces large files such as audio
  storing the file contents on a remote server like GitHub.com"""
 
 
-toolchain = {'name': 'dummy', 'version': ''}
+toolchain = SYSTEM
 
 source_urls = ['https://github.com/git-lfs/git-lfs/archive/']
 sources = ['v%(version)s.tar.gz']

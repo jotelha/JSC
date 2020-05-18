@@ -2,7 +2,7 @@
 name = 'CP2K'
 version = '6.1'
 
-versionsuffix = '-plumed-elpa'
+versionsuffix = '-plumed-local_elpa'
 
 homepage = 'http://www.cp2k.org/'
 description = """CP2K is a freely available (GPL) program, written in Fortran 95, to perform atomistic and molecular
@@ -40,7 +40,7 @@ builddependencies = [
 plumed = True
 
 # Add ELPA support
-elpa = True
+local_elpa = True
 
 configopts = '-D__LIBINT_MAX_AM=6 -D__LIBDERIV_MAX_AM1=5 -D__MAX_CONTR=4'
 

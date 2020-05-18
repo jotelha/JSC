@@ -9,7 +9,7 @@ homepage = ''
 description = """This is a module to load the IntelMPI configuration for large scale MPI jobs"""
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
 source_urls = []
 

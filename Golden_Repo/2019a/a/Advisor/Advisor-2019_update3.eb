@@ -10,7 +10,7 @@ description = """Vectorization Optimization and Thread Prototyping
 """
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
 sources = ['advisor_%(version)s.tar.gz']
 

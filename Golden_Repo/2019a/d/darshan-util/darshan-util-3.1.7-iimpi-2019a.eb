@@ -39,13 +39,13 @@ toolchain = {'name': 'iimpi', 'version': '2019a'}
 
 sources = ['ftp://ftp.mcs.anl.gov/pub/darshan/releases/darshan-%s.tar.gz' % version]
 
-subpath = 'darshan-util'
+local_subpath = 'darshan-util'
 
-preconfigopts = 'cd %s;' % subpath
+preconfigopts = 'cd %s;' % local_subpath
 
-prebuildopts = 'cd %s;' % subpath
+prebuildopts = 'cd %s;' % local_subpath
 
-preinstallopts = 'cd %s;' % subpath
+preinstallopts = 'cd %s;' % local_subpath
 
 sanity_check_paths = {
     'files': ["bin/darshan-job-summary.pl"],

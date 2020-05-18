@@ -10,7 +10,7 @@ description = """Intel Math Kernel Library is a library of highly optimized,
 """
 
 
-toolchain = {'version': 'dummy', 'name': 'dummy'}
+toolchain = SYSTEM
 
 sources = ['l_mkl_%(version)s.tgz']
 

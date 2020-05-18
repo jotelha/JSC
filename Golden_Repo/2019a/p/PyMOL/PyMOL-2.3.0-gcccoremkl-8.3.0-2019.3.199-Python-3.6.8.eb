@@ -25,7 +25,7 @@ dependencies = [
     ('nvidia','418.87.00','', True),
 ]
 
-common_opts = {
+local_common_opts = {
     'req_py_majver': '3',
     'req_py_minver': '0'
 }
@@ -36,12 +36,12 @@ exts_filter = ('python -c "import %(ext_name)s"', '')
 exts_download_dep_fail = True
 
 exts_list = [
-    ('Pmw', '2.0.1', dict(common_opts.items() + [
+    ('Pmw', '2.0.1', dict(local_common_opts.items() + [
         ('source_urls', ['https://pypi.python.org/packages/source/P/Pmw']),
         ('source_tmpl', '%(name)s-%(version)s.tar.gz'),
         ('modulename', 'Pmw'),
     ])),
-    (name, version, dict(common_opts.items() + [
+    (name, version, dict(local_common_opts.items() + [
         ('source_urls', ['https://github.com/schrodinger/pymol-open-source/archive/']),
         ('source_tmpl', 'v%(version)s.tar.gz'),
         ('configopts', '--use-msgpackc=no'),

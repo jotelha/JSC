@@ -7,7 +7,7 @@ description = """Flex (Fast Lexical Analyzer) is a tool for generating scanners.
  sometimes called a tokenizer, is a program which recognizes lexical patterns in text."""
 
 
-toolchain = {'version': '', 'name': 'dummy'}
+toolchain = SYSTEM
 toolchainopts = {'pic': True}
 
 sources = [SOURCELOWER_TAR_GZ]

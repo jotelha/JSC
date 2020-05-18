@@ -52,9 +52,9 @@ srcdir = '%(builddir)s/%(namelower)s-patch_%(version)s/cmake'
 # Initialise configopts so we can comment out at will below
 configopts = ""
 
-parallelisation_packages = ['BUILD_MPI', 'BUILD_OMP', 'PKG_OPT', 'PKG_USER-OMP', 'PKG_USER-INTEL']
+local_parallelisation_packages = ['BUILD_MPI', 'BUILD_OMP', 'PKG_OPT', 'PKG_USER-OMP', 'PKG_USER-INTEL']
 
-configuration_options = [
+local_configuration_options = [
   'BUILD_LIB', 
   'BUILD_EXE', 
   'BUILD_SHARED_LIBS',
@@ -65,74 +65,74 @@ configuration_options = [
 # Blacklist because of deps
 # USER-SMD PKG_USER-QUIP PKG_LATTE PKG_USER-QMMM PKG_USER-VTK PKG_KIM PKG_MSCG
 
-general_packages = ['PKG_ASPHERE', 'PKG_BODY', 'PKG_CLASS2', 'PKG_COLLOID', 'PKG_COMPRESS', 'PKG_CORESHELL',
+local_general_packages = ['PKG_ASPHERE', 'PKG_BODY', 'PKG_CLASS2', 'PKG_COLLOID', 'PKG_COMPRESS', 'PKG_CORESHELL',
                     'PKG_DIPOLE', 'PKG_GRANULAR', 'PKG_KSPACE', 'PKG_KOKKOS', 'PKG_MANYBODY', 'PKG_MC', 
                     'PKG_MISC', 'PKG_MOLECULE', 'PKG_PERI', 'PKG_QEQ', 'PKG_REPLICA', 'PKG_RIGID', 
                     'PKG_SHOCK', 'PKG_SNAP', 'PKG_SRD', 'PKG_VORONOI']
 
-other_packages = ['PKG_PYTHON', 'PKG_MPIIO', 'PKG_POEMS']
+local_other_packages = ['PKG_PYTHON', 'PKG_MPIIO', 'PKG_POEMS']
 
-user_packages = ['PKG_USER-ATC', 'PKG_USER-AWPMD', 'PKG_USER-CGDNA', 'PKG_USER-CGSDK', 'PKG_USER-COLVARS',
+local_user_packages = ['PKG_USER-ATC', 'PKG_USER-AWPMD', 'PKG_USER-CGDNA', 'PKG_USER-CGSDK', 'PKG_USER-COLVARS',
                  'PKG_USER-DIFFRACTION', 'PKG_USER-DPD', 'PKG_USER-DRUDE', 'PKG_USER-EFF', 'PKG_USER-FEP',
                  'PKG_USER-H5MD', 'PKG_USER-LB', 'PKG_USER-MANIFOLD', 'PKG_USER-MEAMC', 'PKG_USER-MESO',
                  'PKG_USER-MGPT', 'PKG_USER-MISC', 'PKG_USER-MOFFF', 'PKG_USER-MOLFILE', 'PKG_USER-NETCDF',
                  'PKG_USER-PHONON', 'PKG_USER-PLUMED', 'PKG_USER-QTB', 'PKG_USER-REAXC',
                  'PKG_USER-SMTBQ', 'PKG_USER-SPH', 'PKG_USER-TALLY', 'PKG_USER-UEF']
 
-packages_opts = ' '.join("-D%s=on" % item for item in parallelisation_packages + general_packages + other_packages +
-                         user_packages + configuration_options)
+local_packages_opts = ' '.join("-D%s=on" % item for item in local_parallelisation_packages + local_general_packages + local_other_packages +
+                         local_user_packages + local_configuration_options)
 
-# kspace_opts = ['FFT' + '=MKL', 'FFT_PACK' + '=array']
-kspace_opts = ['FFT' + '=FFTW3', 'FFT_PACK' + '=array']
+# local_kspace_opts = ['FFT' + '=MKL', 'FFT_PACK' + '=array']
+local_kspace_opts = ['FFT' + '=FFTW3', 'FFT_PACK' + '=array']
 
-optional_deps = ['WITH_JPEG', 'WITH_PNG', 'WITH_GZIP']
+local_optional_deps = ['WITH_JPEG', 'WITH_PNG', 'WITH_GZIP']
 
-specific_opts = ' '.join("-D%s" % item for item in kspace_opts)
-other_opts = ' '.join("-D%s=yes" % item for item in optional_deps)
+local_specific_opts = ' '.join("-D%s" % item for item in local_kspace_opts)
+local_other_opts = ' '.join("-D%s=yes" % item for item in local_optional_deps)
 
 # package-specific options
-tbb_opts = [ 'TBB_INCLUDE_DIR' + '=${TBBROOT}/include',
+local_tbb_opts = [ 'TBB_INCLUDE_DIR' + '=${TBBROOT}/include',
              'TBB_LIBRARY'     + '=${TBBROOT}/lib/libtbb.so' ]
 
-kokkos_opts = [ 'KOKKOS_ENABLE_OPENMP' + '=yes',
+local_kokkos_opts = [ 'KOKKOS_ENABLE_OPENMP' + '=yes',
                 'KOKKOS_ARCH' + '=SKX' ]
 # SKX = Intel Sky Lake Xeon E-class HPC CPUs (AVX512)
 # HSW = Haswell (FORHLR2: Intel(R) Xeon(R) CPU
 
-plumed_opts = [ 'DOWNLOAD_PLUMED' + '=no',
+local_plumed_opts = [ 'DOWNLOAD_PLUMED' + '=no',
                 'PLUMED_MODE'     + '=shared' ]
 
-molfile_opts = [ 'MOLFILE_INCLUDE_DIRS' '="${EBROORVMDPLUGINS}/include;$EBROOTVMDPLUGINS}/LINUXAMD64/molfile"' ]
+local_molfile_opts = [ 'MOLFILE_INCLUDE_DIRS' '="${EBROORVMDPLUGINS}/include;$EBROOTVMDPLUGINS}/LINUXAMD64/molfile"' ]
 
-pythonpath = 'lib/python%(pyshortver)s/site-packages'
-python_installdir = '%(installdir)s' + '/' + pythonpath
+local_pythonpath = 'lib/python%(pyshortver)s/site-packages'
+local_python_installdir = '%(installdir)s' + '/' + local_pythonpath
 
-python_opts = [ 'PYTHON_INSTDIR'     + '=' + python_installdir,
+local_python_opts = [ 'PYTHON_INSTDIR'     + '=' + local_python_installdir,
                 'PYTHON_EXECUTABLE'  + '=${EBROOTPYTHON}/bin/python',
                 'PYTHON_INCLUDE_DIR' + '=${EBROOTPYTHON}/include/python%(pyshortver)sm',
                 'PYTHON_LIBRARY'     + '=${EBROOTPYTHON}/lib/libpython%(pyshortver)sm.so', ]
 
-devel_opts = [  'LAMMPS_EXCEPTIONS'         + '=yes',
+local_devel_opts = [  'LAMMPS_EXCEPTIONS'         + '=yes',
                 'CMAKE_VERBOSE_MAKEFILE'    + '=yes', ]
                 # 'ENABLE_TESTING'            + '=yes',
                 # 'LAMMPS_TESTING_GIT_TAG'    + '=stable_7Aug2019',
                 # 'LAMMPS_TESTING_SOURCE_DIR' + '=%(builddir)s/testing' ]
 
-package_specific_opts = ' '.join([ 
-  ' '.join("-D%s" % item for item in tbb_opts),
-  ' '.join("-D%s" % item for item in kokkos_opts),
-  ' '.join("-D%s" % item for item in molfile_opts),
-  ' '.join("-D%s" % item for item in plumed_opts),
-  ' '.join("-D%s" % item for item in python_opts),
-  ' '.join("-D%s" % item for item in devel_opts) ])
+local_package_specific_opts = ' '.join([ 
+  ' '.join("-D%s" % item for item in local_tbb_opts),
+  ' '.join("-D%s" % item for item in local_kokkos_opts),
+  ' '.join("-D%s" % item for item in local_molfile_opts),
+  ' '.join("-D%s" % item for item in local_plumed_opts),
+  ' '.join("-D%s" % item for item in local_python_opts),
+  ' '.join("-D%s" % item for item in local_devel_opts) ])
 
-configopts += packages_opts + ' ' + other_opts + ' ' + specific_opts + ' ' + package_specific_opts
+configopts += local_packages_opts + ' ' + local_other_opts + ' ' + local_specific_opts + ' ' + local_package_specific_opts
 
 # parallel=1
 buildopts=['VERBOSE=1']
 
 modextrapaths = {
-  'PYTHONPATH': pythonpath,
+  'PYTHONPATH': local_pythonpath,
   'LAMMPS_POTENTIALS': "share/lammps/potentials",
 }
 
@@ -144,7 +144,7 @@ modextravars = {
 
 sanity_check_paths = {
     'files': ['include/lammps/library.h', 'bin/lmp', 'lib64/liblammps.%s' % SHLIB_EXT],
-    'dirs': [pythonpath],
+    'dirs': [local_pythonpath],
 }
 
 moduleclass = 'chem'

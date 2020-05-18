@@ -17,7 +17,7 @@ For the ARM DDT and MAP User Guide, please see: "$EBROOTARMFORGE/doc/userguide.p
 """
 
 
-toolchain = {'version': 'dummy', 'name': 'dummy'}
+toolchain = SYSTEM
 
 sources = ['arm-forge-%(version)s-Redhat-7.0-x86_64.tar']
 #http://content.allinea.com/downloads/allinea-tools-4.2-PR-39422-Redhat-6.0-x86_64.tar

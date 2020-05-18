@@ -24,7 +24,7 @@ dependencies = [
     ('CUDA', '10.1.105', '', ('dummy', 'dummy')),
 ]
 
-common_opts = {
+local_common_opts = {
     'req_py_majver': '3',
     'req_py_minver': '0'
 }
@@ -32,10 +32,10 @@ common_opts = {
 exts_download_dep_fail = True
 
 exts_list = [
-    ('pytools', '2019.1.1', dict(common_opts.items() + [
+    ('pytools', '2019.1.1', dict(local_common_opts.items() + [
         ('source_urls', ['https://pypi.python.org/packages/source/p/pytools']),
     ])),
-    ('pyopencl', version, dict(common_opts.items() + [
+    ('pyopencl', version, dict(local_common_opts.items() + [
         ('source_urls', ['https://pypi.python.org/packages/source/p/pyopencl']),
     ])),
 ]

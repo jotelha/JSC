@@ -29,8 +29,8 @@ dependencies = [
     ('zlib', '1.2.11'),
 ]
 
-opts = '"-L$EBROOTGSL/lib -lgsl -lgslcblas -L$EBROOTZLIB/lib -lz"'
-buildopts = 'all LIBS=%s CC=$CC CXX=$CXX CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" && make install LIBS=%s' % (opts, opts)
+local_opts = '"-L$EBROOTGSL/lib -lgsl -lgslcblas -L$EBROOTZLIB/lib -lz"'
+buildopts = 'all LIBS=%s CC=$CC CXX=$CXX CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" && make install LIBS=%s' % (local_opts, local_opts)
 
 files_to_copy = ["bin", "docs"]
 

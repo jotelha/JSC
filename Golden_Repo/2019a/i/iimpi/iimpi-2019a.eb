@@ -9,15 +9,15 @@ description = """Intel C/C++ and Fortran compilers, alongside Intel MPI.
 """
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
-compver = '2019.3.199'
-gccsuffix = '-GCC-8.3.0'
+local_compver = '2019.3.199'
+local_gccsuffix = '-GCC-8.3.0'
 dependencies = [
-    ('iccifort', '%s%s' % (compver, gccsuffix)),
-    ('icc', compver, gccsuffix),
-    ('ifort', compver, gccsuffix),
-    ('impi', '%s' % compver, '', ('iccifort', '%s%s' % (compver, gccsuffix))),
+    ('iccifort', '%s%s' % (local_compver, local_gccsuffix)),
+    ('icc', local_compver, local_gccsuffix),
+    ('ifort', local_compver, local_gccsuffix),
+    ('impi', '%s' % local_compver, '', ('iccifort', '%s%s' % (local_compver, local_gccsuffix))),
 ]
 
 moduleclass = 'toolchain'

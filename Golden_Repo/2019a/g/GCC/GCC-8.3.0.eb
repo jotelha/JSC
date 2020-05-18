@@ -10,7 +10,7 @@ description = """The GNU Compiler Collection includes front ends for C, C++, Obj
 """
 
 
-toolchain = {'name': 'dummy', 'version': ''}
+toolchain = SYSTEM
 
 dependencies = [
     ('GCCcore', version),

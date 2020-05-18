@@ -12,7 +12,7 @@ description = """GNU M4 is an implementation of the traditional Unix macro proce
 """
 
 
-toolchain = {'name': 'dummy', 'version': ''}
+toolchain = SYSTEM
 
 sources = [SOURCELOWER_TAR_GZ]
 source_urls = [GNU_SOURCE]

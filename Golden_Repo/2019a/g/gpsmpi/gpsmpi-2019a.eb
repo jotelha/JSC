@@ -10,19 +10,19 @@ description = """gcc and GFortran based compiler toolchain,
 """
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
-mpilib = 'psmpi'
-mpiver = '5.2.2-1'
+local_mpilib = 'psmpi'
+local_mpiver = '5.2.2-1'
 
-compname = 'GCC'
-compver = '8.3.0'
+local_compname = 'GCC'
+local_compver = '8.3.0'
 
-comp = (compname, compver)
+local_comp = (local_compname, local_compver)
 
 dependencies = [
-    comp,
-    (mpilib, mpiver, '', comp),
+    local_comp,
+    (local_mpilib, local_mpiver, '', local_comp),
 ]
 
 moduleclass = 'toolchain'

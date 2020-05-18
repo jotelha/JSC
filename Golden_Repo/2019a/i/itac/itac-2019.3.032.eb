@@ -25,7 +25,7 @@ usage = """
 """
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
 sources = ['l_itac_p_%(version)s.tgz']
 

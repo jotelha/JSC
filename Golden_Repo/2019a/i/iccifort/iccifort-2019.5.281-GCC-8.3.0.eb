@@ -10,7 +10,7 @@ description = """Intel Cluster Toolkit Compiler Edition provides Intel C,C++ and
 """
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
 dependencies = [
     ('icc', version, versionsuffix),

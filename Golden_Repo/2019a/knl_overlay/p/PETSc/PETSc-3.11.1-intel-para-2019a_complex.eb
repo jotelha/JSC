@@ -20,7 +20,7 @@ toolchain = {'name': 'intel-para', 'version': '2019a'}
 
 toolchainopts = {'usempi': True, 'pic': True}
 
-downloadinstall = True
+local_downloadinstall = True
 
 source_urls = ['http://ftp.mcs.anl.gov/pub/petsc/release-snapshots']
 sources = ['petsc-lite-%s.tar.gz' % version]

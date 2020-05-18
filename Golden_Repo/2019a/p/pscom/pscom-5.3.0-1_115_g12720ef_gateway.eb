@@ -3,18 +3,18 @@ easyblock = 'ConfigureMake'
 
 name = 'pscom'
 # Create drop-in replacement version that ensures over-riding behaviour
-realversion = "5.3.0-1_115_g12720ef_gateway"
+local_realversion = "5.3.0-1_115_g12720ef_gateway"
 #version = "Default"
-version = realversion
+version = local_realversion
 homepage = 'http://www.par-tec.com'
 description = """ParaStation is a robust and efficient cluster middleware, consisting of a high-performance
 communication layer (MPI) and a sophisticated management layer.
 """
 
 
-toolchain = {'name': 'dummy', 'version': ''}
+toolchain = SYSTEM
 
-sources = ['%%(name)s-%s.tar.gz' % realversion]
+sources = ['%%(name)s-%s.tar.gz' % local_realversion]
 
 builddependencies = [
     ('popt', '1.16'),
@@ -31,7 +31,7 @@ sanity_check_paths = {
 }
 
 modextravars = {
-    'PSCOMVERSION': '%s' % realversion,
+    'PSCOMVERSION': '%s' % local_realversion,
 }
 
 moduleclass = 'tools'

@@ -47,45 +47,45 @@ srcdir = '%(builddir)s/%(namelower)s-patch_%(version)s/cmake'
 # Initialise configopts so we can comment out at will below
 configopts = ""
 
-parallelisation_packages = ['BUILD_MPI', 'BUILD_OMP', 'PKG_OPT', 'PKG_USER-OMP', 'PKG_USER-INTEL']
+local_parallelisation_packages = ['BUILD_MPI', 'BUILD_OMP', 'PKG_OPT', 'PKG_USER-OMP', 'PKG_USER-INTEL']
 
-configuration_options = ['BUILD_LIB', 'BUILD_EXE', 'BUILD_SHARED_LIBS']
+local_configuration_options = ['BUILD_LIB', 'BUILD_EXE', 'BUILD_SHARED_LIBS']
 
 # Blacklist because of deps
 # USER-SMD PKG_USER-QUIP PKG_LATTE PKG_USER-QMMM PKG_USER-VTK PKG_KIM PKG_MSCG
 
-general_packages = ['PKG_ASPHERE', 'PKG_BODY', 'PKG_CLASS2', 'PKG_COLLOID', 'PKG_COMPRESS', 'PKG_CORESHELL',
+local_general_packages = ['PKG_ASPHERE', 'PKG_BODY', 'PKG_CLASS2', 'PKG_COLLOID', 'PKG_COMPRESS', 'PKG_CORESHELL',
                     'PKG_DIPOLE', 'PKG_GRANULAR', 'PKG_KSPACE', 'PKG_MANYBODY', 'PKG_MC', 'PKG_MEAM', 'PKG_MISC',
                     'PKG_MOLECULE', 'PKG_PERI', 'PKG_QEQ', 'PKG_REAX', 'PKG_REPLICA', 'PKG_RIGID', 'PKG_SHOCK',
                     'PKG_SNAP', 'PKG_SRD']
 
-other_packages = ['PKG_PYTHON', 'PKG_MPIIO', 'PKG_POEMS']
+local_other_packages = ['PKG_PYTHON', 'PKG_MPIIO', 'PKG_POEMS']
 
-user_packages = ['PKG_USER-ATC', 'PKG_USER-AWPMD', 'PKG_USER-CGDNA', 'PKG_USER-CGSDK', 'PKG_USER-COLVARS',
+local_user_packages = ['PKG_USER-ATC', 'PKG_USER-AWPMD', 'PKG_USER-CGDNA', 'PKG_USER-CGSDK', 'PKG_USER-COLVARS',
                  'PKG_USER-DIFFRACTION', 'PKG_USER-DPD', 'PKG_USER-DRUDE', 'PKG_USER-EFF', 'PKG_USER-FEP',
                  'PKG_USER-H5MD', 'PKG_USER-LB', 'PKG_USER-MANIFOLD', 'PKG_USER-MEAMC', 'PKG_USER-MESO',
                  'PKG_USER-MGPT', 'PKG_USER-MISC', 'PKG_USER-MOFFF', 'PKG_USER-MOLFILE', 'PKG_USER-NETCDF',
                  'PKG_USER-PHONON', 'PKG_USER-QTB', 'PKG_USER-REAXC',
                  'PKG_USER-SMTBQ', 'PKG_USER-SPH', 'PKG_USER-TALLY', 'PKG_USER-UEF']
 
-packages_opts = ' '.join("-D%s=on" % item for item in parallelisation_packages + general_packages + other_packages +
-                         user_packages + configuration_options)
+local_packages_opts = ' '.join("-D%s=on" % item for item in local_parallelisation_packages + local_general_packages + local_other_packages +
+                         local_user_packages + local_configuration_options)
 
-kspace_opts = ['FFT' + '=MKL', 'FFT_PACK' + '=array']
+local_kspace_opts = ['FFT' + '=MKL', 'FFT_PACK' + '=array']
 
-optional_deps = ['WITH_JPEG', 'WITH_PNG', 'WITH_GZIP']
+local_optional_deps = ['WITH_JPEG', 'WITH_PNG', 'WITH_GZIP']
 
-specific_opts = ' '.join("-D%s" % item for item in kspace_opts)
-other_opts = ' '.join("-D%s=yes" % item for item in optional_deps)
+local_specific_opts = ' '.join("-D%s" % item for item in local_kspace_opts)
+local_other_opts = ' '.join("-D%s=yes" % item for item in local_optional_deps)
 
-configopts += packages_opts + ' ' + other_opts + ' ' + specific_opts 
+configopts += local_packages_opts + ' ' + local_other_opts + ' ' + local_specific_opts 
 
-pythonpath = 'lib/python%(pyshortver)s/site-packages'
-modextrapaths = {'PYTHONPATH': pythonpath}
+local_pythonpath = 'lib/python%(pyshortver)s/site-packages'
+modextrapaths = {'PYTHONPATH': local_pythonpath}
 
 sanity_check_paths = {
     'files': ['include/lammps/library.h', 'bin/lmp', 'lib64/liblammps.%s' % SHLIB_EXT],
-    'dirs': [pythonpath],
+    'dirs': [local_pythonpath],
 }
 
 moduleclass = 'chem'

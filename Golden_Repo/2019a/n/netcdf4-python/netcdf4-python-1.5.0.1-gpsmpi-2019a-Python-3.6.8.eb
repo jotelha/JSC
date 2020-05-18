@@ -25,7 +25,7 @@ dependencies = [
     ('mpi4py', '3.0.1', versionsuffix),
 ]
 
-common_opts = {
+local_common_opts = {
     'req_py_majver': '3',
     'req_py_minver': '0'
 }
@@ -34,11 +34,11 @@ prebuildopts = 'export LDSHARED="$CC -shared" && '
 preinstallopts = prebuildopts
 
 exts_list = [
-    ('cftime', '1.0.3.4', dict(common_opts.items() + [
+    ('cftime', '1.0.3.4', dict(local_common_opts.items() + [
         ('source_urls', ['https://github.com/Unidata/cftime/archive/']),
         ('source_tmpl', 'v%(version)srel.tar.gz'),
     ])),
-    (name, version, dict(common_opts.items() + [
+    (name, version, dict(local_common_opts.items() + [
         ('source_urls', ['https://github.com/Unidata/netcdf4-python/archive/']),
         ('source_tmpl', 'v%(version)srel.tar.gz'),
         ('patches', ['netcdf4-python-1.1.8-avoid-diskless-test.patch']),

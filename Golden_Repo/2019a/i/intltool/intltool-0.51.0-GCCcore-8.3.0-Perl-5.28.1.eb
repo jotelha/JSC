@@ -3,8 +3,8 @@ easyblock = 'ConfigureMake'
 
 name = 'intltool'
 version = '0.51.0'
-perlversion = '5.28.1'
-versionsuffix = '-Perl-%s' % perlversion
+local_perlversion = '5.28.1'
+versionsuffix = '-Perl-%s' % local_perlversion
 
 homepage = 'http://freedesktop.org/wiki/Software/intltool/'
 description = """intltool is a set of tools to centralize translation of
@@ -26,7 +26,7 @@ builddependencies = [
 ]
 
 dependencies = [
-    ('Perl', perlversion),
+    ('Perl', local_perlversion),
 ]
 
 sanity_check_paths = {

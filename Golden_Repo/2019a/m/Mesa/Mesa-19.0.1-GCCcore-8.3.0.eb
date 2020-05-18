@@ -30,7 +30,7 @@ source_urls = [
     'https://github.com/NVIDIA/libglvnd/archive/'
 ]
 
-pyver = '3.6.8'
+local_pyver = '3.6.8'
 
 builddependencies = [
     ('binutils', '2.32'),
@@ -39,9 +39,9 @@ builddependencies = [
     ('Autotools', '20180311'),
     ('pkg-config', '0.29.2'),
     ('expat', '2.2.6'),
-    ('Python', pyver),
-    ('libxml2', '2.9.9', '-Python-%s' % pyver),
-    ('Meson', '0.50.0', '-Python-%s' % pyver),
+    ('Python', local_pyver),
+    ('libxml2', '2.9.9', '-Python-%s' % local_pyver),
+    ('Meson', '0.50.0', '-Python-%s' % local_pyver),
     ('Ninja', '1.9.0'),
     ('CMake', '3.14.0'),
 ]

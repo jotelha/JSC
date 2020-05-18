@@ -20,7 +20,7 @@ will be created in the current directory on completion.
 """
 
 
-toolchain = {'version': 'dummy', 'name': 'dummy'}
+toolchain = SYSTEM
 
 sources = ['arm-reports-%(version)s-Redhat-7.0-x86_64.tar']
 source_urls = ['http://content.allinea.com/downloads/']

@@ -17,7 +17,7 @@ dependencies = [
     ('GEOS', '3.7.1', versionsuffix),
 ]
 
-common_opts = {
+local_common_opts = {
     'req_py_majver': '2',
     'req_py_minver': '7'
 }
@@ -28,14 +28,14 @@ exts_filter = ('python -c "import %(ext_name)s"', '')
 exts_download_dep_fail = True
 
 exts_list = [
-    ('pyshp', '2.0.1', dict(common_opts.items() + [
+    ('pyshp', '2.0.1', dict(local_common_opts.items() + [
         ('source_urls', ['https://pypi.python.org/packages/source/p/pyshp']),
         ('modulename', 'shapefile'),
     ])),
-    ('pyproj', '1.9.6', dict(common_opts.items() + [
+    ('pyproj', '1.9.6', dict(local_common_opts.items() + [
         ('source_urls', ['https://pypi.python.org/packages/source/p/pyproj']),
     ])),
-    ('basemap', '1.2.0', dict(common_opts.items() + [
+    ('basemap', '1.2.0', dict(local_common_opts.items() + [
         ('source_urls', ['https://github.com/matplotlib/basemap/archive/']),
         ('source_tmpl', 'v%(version)srel.tar.gz'),
         ('prebuildopts', 'GEOS_DIR="$EBROOTGEOS" '),

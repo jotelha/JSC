@@ -3,8 +3,8 @@ easyblock = "PythonPackage"
 
 name = 'h5py'
 version = '2.9.0'
-pysuffix = '-Python-%(pyver)s'
-versionsuffix = '-serial%s' % pysuffix
+local_pysuffix = '-Python-%(pyver)s'
+versionsuffix = '-serial%s' % local_pysuffix
 
 homepage = 'http://www.h5py.org/'
 description = """HDF5 for Python (h5py) is a general-purpose Python interface to the Hierarchical Data Format library,
@@ -22,13 +22,13 @@ req_py_majver = 3
 req_py_minver = 0
 
 builddependencies = [
-    ('pkgconfig', '1.5.1', pysuffix),
+    ('pkgconfig', '1.5.1', local_pysuffix),
     ('binutils', '2.32'),
 ]
 
 dependencies = [
     ('Python', '3.6.8'),
-    ('SciPy-Stack', '2019a', pysuffix, ('gcccoremkl', '8.3.0-2019.3.199')), # numpy required
+    ('SciPy-Stack', '2019a', local_pysuffix, ('gcccoremkl', '8.3.0-2019.3.199')), # numpy required
     ('HDF5', '1.10.5', '-serial'),
 ]
 

@@ -9,7 +9,7 @@ homepage = ''
 description = """This is a module to load the ParaStationMPI settings to be used with UCX and RC as TL"""
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
 source_urls = []
 

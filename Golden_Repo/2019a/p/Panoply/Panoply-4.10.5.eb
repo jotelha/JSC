@@ -8,7 +8,7 @@ homepage = 'https://www.giss.nasa.gov/tools/panoply'
 description = "Panoply plots geo-referenced and other arrays from netCDF, HDF, GRIB, and other datasets."
 
 
-toolchain = {'name': 'dummy', 'version': ''}
+toolchain = SYSTEM
 
 sources = ['%(name)sJ-%(version)s.tgz']
 source_urls = ['https://www.giss.nasa.gov/tools/panoply/download/']

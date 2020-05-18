@@ -7,7 +7,7 @@ homepage = 'https://developer.nvidia.com/cuda-toolkit'
 description = """This is a set of libraries normally installed by the NVIDIA driver installer."""
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
 source_urls = [
     'http://us.download.nvidia.com/tesla/%s/' % realversion,

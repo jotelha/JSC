@@ -7,7 +7,7 @@ description = """Intel Inspector 2017 is an easy to use memory error checker and
 applications """
 
 
-toolchain = {'name':'dummy','version':'dummy'}
+toolchain = SYSTEM
 
 sources = ['inspector_%(version)s.tar.gz']
 

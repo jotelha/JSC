@@ -9,7 +9,7 @@ homepage = ''
 description = """This is a module to load the ParaStationMPI settings to be used for large scale hybrid jobs"""
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
 source_urls = []
 

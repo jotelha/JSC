@@ -7,18 +7,18 @@ description = """Fortran compiler from Intel
 """
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
 #sources = ['parallel_studio_xe_%(version_major)s_composer_edition_for_fortran.tgz']
 sources = ['parallel_studio_xe_%(version_major)s_update%(version_minor)s_composer_edition_for_fortran.tgz']
 
-gccver = '8.3.0'
-binutilsver = '2.32'
-versionsuffix = '-GCC-%s' % gccver
+local_gccver = '8.3.0'
+local_binutilsver = '2.32'
+versionsuffix = '-GCC-%s' % local_gccver
 
 dependencies = [
-    ('GCCcore', gccver),
-    ('binutils', binutilsver, '', ('GCCcore', gccver)),
+    ('GCCcore', local_gccver),
+    ('binutils', local_binutilsver, '', ('GCCcore', local_gccver)),
 ]
 
 # list of regex for components to install

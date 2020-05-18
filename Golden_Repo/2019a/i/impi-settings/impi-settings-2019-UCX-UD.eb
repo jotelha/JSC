@@ -9,7 +9,7 @@ homepage = ''
 description = """This is a module to load the IntelMPI configuration with UCX and UD as TL"""
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
 source_urls = []
 

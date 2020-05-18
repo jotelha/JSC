@@ -14,7 +14,7 @@ description = """Intel SPMD Program Compilers; An open-source compiler for high-
 """
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
 sources = ['ispc-v%(version)s-linux.tar.gz']
 source_urls = [('http://sourceforge.net/projects/ispcmirror/files/v%(version)s', 'download')]

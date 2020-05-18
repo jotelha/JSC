@@ -14,7 +14,7 @@ toolchainopts = {'optarch': True, 'pic': True}
 source_urls = [homepage]
 sources = ['fftw-%(version)s.tar.gz']
 
-common_configopts = "--enable-threads --enable-openmp --with-pic --enable-static --enable-shared"
+local_common_configopts = "--enable-threads --enable-openmp --with-pic --enable-static --enable-shared"
 
 # no quad precision, requires GCC v4.6 or higher
 # see also http://www.fftw.org/doc/Extended-and-quadruple-precision-in-Fortran.html

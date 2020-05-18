@@ -12,7 +12,7 @@ for C malloc or C++ new.
 
 toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
 
-libatomic_ops_version = '7.6.6'
+local_libatomic_ops_version = '7.6.6'
 
 source_urls = ['http://hboehm.info/gc/gc_source/']
 sources = [SOURCE_TAR_GZ]

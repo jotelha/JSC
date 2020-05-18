@@ -10,7 +10,7 @@ description = """
 """
 
 
-toolchain = {'name': 'dummy', 'version': ''}
+toolchain = SYSTEM
 toolchainopts = {'pic': True}
 
 sources = [SOURCE_TAR_GZ]
@@ -34,10 +34,10 @@ prebuildopts = preconfigopts
 # --enable-plugins should be used whenever --enable-gold is used, see http://llvm.org/docs/GoldPlugin.html
 configopts = '--with-sysroot=/ --enable-gold --enable-ld=default --enable-plugins'
 
-binlist = ['addr2line', 'ar', 'as', 'c++filt', 'elfedit', 'gprof', 'ld', 'ld.bfd', 'ld.gold', 'nm',
+local_binlist = ['addr2line', 'ar', 'as', 'c++filt', 'elfedit', 'gprof', 'ld', 'ld.bfd', 'ld.gold', 'nm',
            'objcopy', 'objdump', 'ranlib', 'readelf', 'size', 'strings', 'strip']
 sanity_check_paths = {
-    'files': ['bin/%s' % x for x in binlist] + ['lib/libbfd.a', 'lib/libopcodes.a'] +
+    'files': ['bin/%s' % x for x in local_binlist] + ['lib/libbfd.a', 'lib/libopcodes.a'] +
              ['include/%s' % x for x in ['ansidecl.h', 'bfd.h', 'bfdlink.h', 'dis-asm.h', 'symcat.h']],
     'dirs': [],
 }

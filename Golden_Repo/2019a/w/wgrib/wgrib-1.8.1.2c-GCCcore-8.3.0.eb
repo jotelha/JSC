@@ -22,9 +22,9 @@ source_urls = ['ftp://ftp.cpc.ncep.noaa.gov/wd51we/wgrib/']
 builddependencies = [('binutils', '2.32')]
 
 # put here the list of generated executables when compiling
-list_of_executables = ["wgrib"]
+local_list_of_executables = ["wgrib"]
 
-files_to_copy = [(list_of_executables, "bin")]
+files_to_copy = [(local_list_of_executables, "bin")]
 
 sanity_check_paths = {
     'files': ['bin/wgrib'],

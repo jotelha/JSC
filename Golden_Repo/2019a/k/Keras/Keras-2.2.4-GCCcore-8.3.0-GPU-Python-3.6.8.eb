@@ -3,8 +3,8 @@ easyblock = 'PythonBundle'
 
 name = 'Keras'
 version = '2.2.4'
-pysuffix = '-Python-%(pyver)s'
-versionsuffix = '-GPU%s' % pysuffix
+local_pysuffix = '-Python-%(pyver)s'
+versionsuffix = '-GPU%s' % local_pysuffix
 
 homepage = 'https://keras.io/'
 description = """Keras is a minimalist, highly modular neural networks library, written in Python and
@@ -20,7 +20,7 @@ builddependencies = [
 dependencies = [
     ('Python', '3.6.8'),
     ('TensorFlow', '1.13.1', versionsuffix),
-    ('h5py', '2.9.0', '-serial%s' % pysuffix),
+    ('h5py', '2.9.0', '-serial%s' % local_pysuffix),
 ]
 
 use_pip = True

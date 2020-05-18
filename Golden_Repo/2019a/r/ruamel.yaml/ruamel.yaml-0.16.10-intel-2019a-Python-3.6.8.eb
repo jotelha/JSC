@@ -50,7 +50,7 @@ exts_list = [
 
 modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
 
-sanity_pip_check = True
+local_sanity_pip_check = True
 
 sanity_check_paths = {
     'files': ['bin/yaml'],

@@ -11,7 +11,7 @@ description = """CUDA (formerly Compute Unified Device Architecture) is a parall
 """
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
 source_urls = [
     'http://developer.download.nvidia.com/compute/cuda/%(version_major_minor)s/Prod/local_installers/',

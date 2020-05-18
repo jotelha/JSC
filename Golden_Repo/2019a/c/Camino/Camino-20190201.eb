@@ -8,12 +8,12 @@ homepage = 'http://camino.cs.ucl.ac.uk'
 description = "Camino is a free, open-source software package for analysis and reconstruction of Diffusion MRI data."
 
 
-toolchain = {'name': 'dummy', 'version': ''}
+toolchain = SYSTEM
 toolchainopts = {'pic': True}
 
-code_hash = '1c4ef77615d103d43adcff6c79b72d0bbdac0897'
+local_code_hash = '1c4ef77615d103d43adcff6c79b72d0bbdac0897'
 
-sources = ['camino-code-%s.zip' % code_hash]
+sources = ['camino-code-%s.zip' % local_code_hash]
 source_urls = [SOURCEFORGE_SOURCE]
 
 # It is a java package, so we can avoid loading binutils. Do not use this as template for anything else!
@@ -35,8 +35,8 @@ parallel = 1
 
 start_dir = '%(installdir)s'
 
-prebuildopts = 'mv %%(installdir)s/camino-code-%s/* %%(installdir)s && ' % code_hash
-prebuildopts += 'rm -Rf %%(installdir)s/camino-code-%s/ && ' % code_hash
+prebuildopts = 'mv %%(installdir)s/camino-code-%s/* %%(installdir)s && ' % local_code_hash
+prebuildopts += 'rm -Rf %%(installdir)s/camino-code-%s/ && ' % local_code_hash
 
 sanity_check_paths = {
     'files': ['bin/addnoise'],

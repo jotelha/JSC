@@ -11,10 +11,10 @@ applications that tap into the power and performance of multicore and manycore h
 """
 
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = SYSTEM
 
-year = version.split('.')[0]
-update = version.split('.')[1]
+local_year = version.split('.')[0]
+local_update = version.split('.')[1]
 
 sources = [
     'l_tbb_%(version)s.tgz',

@@ -3,7 +3,7 @@ easyblock = 'PackedBinary'
 
 name = 'PyFerret'
 version = '7.5.0'
-dataset_ver = '7.4'
+local_dataset_ver = '7.4'
 versionsuffix = '-Python-%(pyver)s'
 
 homepage = 'http://ferret.pmel.noaa.gov/'
@@ -70,9 +70,9 @@ modextravars = {
 postinstallcmds = [
     'chmod +x %(installdir)s/bin/pyferret',
     'mkdir %(installdir)s/datasets',
-    'mv %%(builddir)s/FerretDatasets-%s/data  %%(installdir)s/datasets' % dataset_ver,
-    'mv %%(builddir)s/FerretDatasets-%s/descr %%(installdir)s/datasets' % dataset_ver,
-    'mv %%(builddir)s/FerretDatasets-%s/grids %%(installdir)s/datasets' % dataset_ver,
+    'mv %%(builddir)s/FerretDatasets-%s/data  %%(installdir)s/datasets' % local_dataset_ver,
+    'mv %%(builddir)s/FerretDatasets-%s/descr %%(installdir)s/datasets' % local_dataset_ver,
+    'mv %%(builddir)s/FerretDatasets-%s/grids %%(installdir)s/datasets' % local_dataset_ver,
 ]
 
 moduleclass = 'vis'

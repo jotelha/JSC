@@ -3,8 +3,8 @@ easyblock = 'PythonBundle'
 
 name = 'TensorFlow'
 version = '1.13.1'
-pysuffix = '-Python-%(pyver)s'
-versionsuffix = '-GPU%s' % pysuffix
+local_pysuffix = '-Python-%(pyver)s'
+versionsuffix = '-GPU%s' % local_pysuffix
 
 homepage = 'https://www.tensorflow.org/'
 description = "An open-source software library for Machine Intelligence"
@@ -19,15 +19,15 @@ builddependencies = [
     ('binutils', '2.32'),
 ]
 
-cudaver = '10.1.105'
+local_cudaver = '10.1.105'
 
 dependencies = [
     ('Python', '3.6.8'),
-    ('SciPy-Stack', '2019a', pysuffix, ('gcccoremkl', '8.3.0-2019.3.199')),
-    ('h5py', '2.9.0', '-serial%s' % pysuffix),
-    ('cuDNN', '7.5.1.10', '-CUDA-%s' % cudaver, True),
-    ('CUDA', cudaver, '', True),
-    ('NCCL', '2.4.6-1', '-CUDA-%s' % cudaver),
+    ('SciPy-Stack', '2019a', local_pysuffix, ('gcccoremkl', '8.3.0-2019.3.199')),
+    ('h5py', '2.9.0', '-serial%s' % local_pysuffix),
+    ('cuDNN', '7.5.1.10', '-CUDA-%s' % local_cudaver, True),
+    ('CUDA', local_cudaver, '', True),
+    ('NCCL', '2.4.6-1', '-CUDA-%s' % local_cudaver),
 ]
 
 use_pip = True

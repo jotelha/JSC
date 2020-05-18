@@ -18,7 +18,7 @@ dependencies = [
     ('SciPy-Stack', version, versionsuffix),
 ]
 
-common_opts = {
+local_common_opts = {
     'req_py_majver': '3',
     'req_py_minver': '0'
 }
@@ -29,18 +29,18 @@ exts_filter = ('python -c "import %(ext_name)s"', '')
 exts_download_dep_fail = True
 
 exts_list = [
-    ('scikit-learn', '0.20.3', dict(common_opts.items() + [
+    ('scikit-learn', '0.20.3', dict(local_common_opts.items() + [
         ('source_urls', ['https://pypi.python.org/packages/source/s/scikit-learn']),
         ('modulename', 'sklearn'),
     ])),
-    ('PyWavelets', '1.0.3', dict(common_opts.items() + [
+    ('PyWavelets', '1.0.3', dict(local_common_opts.items() + [
         ('source_urls', ['https://pypi.python.org/packages/source/p/PyWavelets']),
         ('modulename', 'pywt'),
     ])),
-    ('imageio', '2.5.0', dict(common_opts.items() + [
+    ('imageio', '2.5.0', dict(local_common_opts.items() + [
         ('source_urls', ['https://pypi.python.org/packages/source/i/imageio']),
     ])),
-    ('scikit-image', '0.15.0', dict(common_opts.items() + [
+    ('scikit-image', '0.15.0', dict(local_common_opts.items() + [
         ('source_urls', ['https://pypi.python.org/packages/source/s/scikit-image']),
         ('modulename', 'skimage'),
     ])),

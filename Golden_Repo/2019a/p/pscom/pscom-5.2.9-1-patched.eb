@@ -11,7 +11,7 @@ communication layer (MPI) and a sophisticated management layer.
 """
 
 
-toolchain = {'name': 'dummy', 'version': ''}
+toolchain = SYSTEM
 
 sources = ['%s.zip' % version]
 source_urls = ['https://github.com/ParaStation/%(name)s/archive/']

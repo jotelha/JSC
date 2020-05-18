@@ -3,8 +3,8 @@ easyblock = 'PythonPackage'
 
 name = 'torchvision'
 version = '0.3.0'
-pysuffix = '-Python-%(pyver)s'
-versionsuffix = '-GPU%s' % pysuffix
+local_pysuffix = '-Python-%(pyver)s'
+versionsuffix = '-GPU%s' % local_pysuffix
 
 homepage = 'http://pytorch.org/'
 description = """The torchvision package consists of popular datasets, model architectures, and common image
@@ -24,7 +24,7 @@ sources = [
 
 dependencies = [
     ('Python', '3.6.8'),
-    ('SciPy-Stack', '2019a', pysuffix),
+    ('SciPy-Stack', '2019a', local_pysuffix),
     ('PyTorch', '1.1.0', versionsuffix),
 ]
 
