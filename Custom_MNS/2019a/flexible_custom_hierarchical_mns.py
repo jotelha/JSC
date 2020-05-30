@@ -84,7 +84,7 @@ class FlexibleCustomHierarchicalMNS(HierarchicalMNS):
         comp_name, comp_ver = comp_info
 
         # Strip the irrelevant bits of the version and append the suffix again
-        if comp_relevant_versions.has_key(comp_name):
+        if comp_name in comp_relevant_versions:
             suffix = '-'.join(comp_ver.split('-')[1:])
             comp_ver = '.'.join(comp_ver.split('.')[:comp_relevant_versions[comp_name]])
             if suffix:
@@ -98,7 +98,7 @@ class FlexibleCustomHierarchicalMNS(HierarchicalMNS):
 
         # Find suffix, if any, to be appended. Try to be clever, since the suffix is embedded in the version
         # and sometimes the version might include a string that looks like a suffix (ie: psmpi-5.4.0-1)
-        if mpi_relevant_versions.has_key(mpi_name):
+        if mpi_name in mpi_relevant_versions:
             # Find possible suffixes
             possible_suffixes = mpi_ver.split('-')[1:]
             # Match the '-1' that is a typical part of psmpi's version
