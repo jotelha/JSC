@@ -1,0 +1,49 @@
+easyblock = 'PythonBundle'
+
+name = 'python-igraph'
+version = '0.7.1.post6'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://igraph.org/python'
+description = """Python interface to the igraph high performance graph library, primarily aimed at complex network
+ research and analysis."""
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+toolchainopts = {'pic': True}
+
+builddependencies = [
+    ('pkg-config', '0.29.2'),
+]
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('igraph', '0.7.1'),
+    ('PyCairo', '1.18.0', versionsuffix),
+]
+
+use_pip = False
+
+exts_default_options = {'source_urls': [PYPI_SOURCE]}
+
+check_ldshared = True # makes Python use correct linker (icc -shared)
+
+exts_list = [
+    ('texttable', '1.6.2', {
+        'source_urls': ['https://pypi.python.org/packages/source/t/texttable/'],
+        'checksums': ['eff3703781fbc7750125f50e10f001195174f13825a92a45e9403037d539b4f4'],
+    }),
+    (name, version, {
+        'source_urls': ['https://pypi.python.org/packages/source/p/python-igraph/'],
+        'modulename': 'igraph',
+    }),
+]
+
+sanity_check_paths = {
+    'files': ['bin/igraph'],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+# cairo must be available for proper plotting support
+sanity_check_commands = ["python -c 'from igraph.drawing.utils import find_cairo; cairo = find_cairo(); cairo.Context'"]
+
+moduleclass = 'lib'

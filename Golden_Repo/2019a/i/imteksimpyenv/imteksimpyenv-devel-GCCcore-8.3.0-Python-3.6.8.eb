@@ -1,0 +1,30 @@
+easyblock = 'PythonBundle'
+
+name = 'imteksimpyenv'
+version = 'devel'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'None'
+description = """Continuously growing random collection of scattered python packages."""
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('SciPy-Stack', '2019a', versionsuffix, ('gcccoremkl', '8.3.0-2019.3.199'))
+]
+
+use_pip = True
+
+exts_list = [
+    ('miniball', '1.0.3', {  # finds the minimum bounding sphere of a point set
+        'source_urls': ['https://pypi.python.org/packages/source/m/miniball'],
+    }),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'lib'

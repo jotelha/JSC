@@ -1,0 +1,61 @@
+easyblock = 'PythonBundle'
+
+name = 'FireWorks'
+version = '1.9.5-mod'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://materialsproject.github.io/fireworks/'
+description = """FireWorks is intended to be a friendly workflow software that
+ is easy to get started with, but flexible enough to handle complicated use cases.
+ This is not the original FireWorks distribution, but incorporates custom
+ modifications within fork https://github.com/jotelha/fireworks."""
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('python-igraph', '0.7.1.post6', versionsuffix),  # 0.8.0 not compatible
+    ('ruamel.yaml', '0.16.10', versionsuffix),
+]
+
+
+# this is a bundle of Python packages
+exts_defaultclass = 'PythonPackage'
+use_pip=True
+download_dep_fail=True
+
+exts_list = [
+    ('flask-paginate', '0.5.0', { 
+        'source_urls': ['https://pypi.python.org/packages/source/f/flask-paginate/'],
+        'modulename': 'flask_paginate',
+    }),
+    ('gunicorn', '20.0.4', {
+        'source_urls': ['https://pypi.python.org/packages/source/g/gunicorn/'],
+    }),
+    ('monty', '3.0.2', {
+        'source_urls': ['https://pypi.python.org/packages/source/m/monty/'],
+    }),
+    ('pymongo', '3.10.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/pymongo/'],
+        'check_ldshared': True,
+    }),
+    ('tabulate', '0.8.6', {
+        'source_urls': ['https://pypi.python.org/packages/source/t/tabulate/'],
+    }),
+    ('tqdm', '4.43.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/t/tqdm/'],
+    }),
+    ('FireWorks', version, {
+        'source_urls': ['https://github.com/jotelha/fireworks/archive/'],
+        'source_tmpl': 'v%(version)s.tar.gz',
+    }),
+]
+
+modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages']
+}
+
+moduleclass = 'tools'

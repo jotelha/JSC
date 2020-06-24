@@ -1,0 +1,28 @@
+easyblock = 'PythonPackage'
+
+name = 'mock-ssh-server'
+version = '0.8.1'
+versionsuffix = '-Python-%(pyver)s'
+options = {'modulename': 'mockssh'}
+
+homepage = 'https://github.com/carletes/mock-ssh-server'
+description = "mock-ssh-server packs a Python context manager that implements an SSH server for testing purposes. It is built on top of paramiko, so it does not need OpenSSH binaries to be installed."
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [
+    ('Python', '3.6.8'),
+]
+
+use_pip = True
+download_dep_fail = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'lib'

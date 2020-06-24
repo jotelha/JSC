@@ -1,0 +1,32 @@
+# This file is part of JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+easyblock = 'PythonPackage'
+
+name = 'virtualenv'
+version = '16.7.9'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://virtualenv.pypa.io/en/latest'
+description = """virtualenv is a tool to create isolated Python environments. 
+Since Python 3.3, a subset of it has been integrated into the standard library
+under the venv module. Note though, that the venv module does not offer all
+features of this library (e.g. cannot create bootstrap scripts, cannot create
+virtual environments for other python versions than the host python, not
+relocatable, etc.). Tools in general as such still may prefer using virtualenv
+for its ease of upgrading (via pip), unified handling of different Python
+versions and some more advanced features."""
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+download_dep_fail = True
+
+dependencies = [('Python', '3.6.8')]
+
+sanity_check_paths = {
+    'files': ['bin/virtualenv'],
+    'dirs':  ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'devel'

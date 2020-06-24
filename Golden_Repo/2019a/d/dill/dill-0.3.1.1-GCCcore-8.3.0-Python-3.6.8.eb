@@ -1,0 +1,30 @@
+easyblock = 'PythonBundle'
+
+name = 'dill'
+version = '0.3.1.1'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://dill.readthedocs.io/en/latest/dill.html'
+description = """dill extends python’s pickle module for serializing and 
+ de-serializing python objects to the majority of the built-in python types."""
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+dependencies = [
+    ('Python', '3.6.8'),
+]
+
+use_pip = True
+
+exts_list = [
+    ('dill', '0.3.1.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dill'],
+    }),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'tools'

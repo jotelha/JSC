@@ -1,0 +1,26 @@
+easyblock = 'PythonPackage'
+
+name = 'python-daemon'
+version = '2.2.4'
+versionsuffix = '-Python-%(pyver)s'
+options = {'modulename': 'daemon'}
+
+homepage = 'https://pagure.io/python-daemon'
+description = "This library implements the well-behaved daemon specification of PEP 3143, 'Standard daemon process library'."
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [
+    ('Python', '3.6.8'),
+]
+
+download_dep_fail = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'lib'

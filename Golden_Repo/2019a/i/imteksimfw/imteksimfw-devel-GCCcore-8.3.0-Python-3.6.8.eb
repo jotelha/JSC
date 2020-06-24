@@ -1,0 +1,40 @@
+easyblock = 'PythonPackage'
+
+name = 'imteksimfw'
+version = 'devel'
+versionsuffix = '-Python-%(pyver)s'
+
+# options = { 'modulename': 'imteksimfw' }
+
+homepage = 'https://github.com/IMTEK-Simulation/imteksimfw'
+description = "Custom FireWorks extensions"
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+sources = [{
+    'filename': '%(name)s-%(version)s.tar.gz',
+    'git_config': {
+        'url': 'https://github.com/IMTEK-Simulation',
+        'repo_name': 'imteksimfw',
+        'tag': 'master',
+    }
+}]
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('ansible', '2.9.6', versionsuffix),  # only for a few jinja2 filters
+    ('jinja2-time', '0.2.0', versionsuffix),  # more jinja2 filters
+    ('pid', '3.0.0', versionsuffix),
+    ('python-daemon', '2.2.4', versionsuffix),
+    ('FireWorks', '1.9.5-mod', versionsuffix),
+]
+
+use_pip = True
+download_dep_fail = True
+
+sanity_check_paths = {
+    'files': ['bin/fwrlm', 'bin/render'],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'tools'
