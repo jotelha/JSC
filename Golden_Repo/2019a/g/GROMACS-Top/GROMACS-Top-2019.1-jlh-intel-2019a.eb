@@ -13,7 +13,7 @@ toolchain = {'name': 'intel', 'version': '2019a'}
 sources = [{
     'filename': 'gromacs-top.tar.gz',
     'git_config': {
-        'url': '/p/project/chfr13/hoermann1/git',
+        'url': '/p/project/chfr13/hoermann4/git',
         'repo_name': 'gromacs',
         'tag': 'v%(version)s-jlh',
     },

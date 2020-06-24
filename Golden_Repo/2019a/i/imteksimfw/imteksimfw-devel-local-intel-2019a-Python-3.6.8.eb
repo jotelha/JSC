@@ -14,7 +14,7 @@ toolchain = {'name': 'intel', 'version': '2019a'}
 sources = [{
     'filename': '%(name)s-%(version)s.tar.gz',
     'git_config': {
-        'url': '/p/project/chfr13/hoermann1/git',
+        'url': '/p/project/chfr13/hoermann4/git',
         'repo_name': 'imteksimfw',
         'tag': 'master',
     }
