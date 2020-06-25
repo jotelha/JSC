@@ -26,11 +26,13 @@ dependencies = [
 ]
 
 preconfigopts = "autoreconf -i && "
+# preconfigopts = "autoreconf -i && "
 # Remove hardcoded links to BLAS/LAPACK
-preconfigopts += "sed -i 's/-lblas/$LIBBLAS/' configure && "
-preconfigopts += "sed -i 's/-llapack/$LIBLAPACK/' configure && "
+# preconfigopts += "sed -i 's/-lblas/$LIBBLAS/' configure && "
+# preconfigopts += "sed -i 's/-llapack/$LIBLAPACK/' configure && "
 
-configopts = "--with-external-blas --with-external-lapack --with-external-glpk"
+# configopts = "--with-external-blas --with-external-lapack --with-external-glpk"
+configopts = "--with-external-glpk"
 
 sanity_check_paths = {
     'files': ['lib/libigraph.%s' % x for x in [SHLIB_EXT, 'la', 'a']] + ['lib/pkgconfig/igraph.pc'] +
