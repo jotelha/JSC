@@ -1,0 +1,59 @@
+easyblock = 'PythonBundle'
+
+name = 'ovito'
+version = '3.1.2'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://pypi.org/project/ovito'
+description = """OVITO (Open Visualization Tool) is a scientific visualization
+ and analysis package for atomistic and particle-based simulation data. Visit 
+ the official website for more information: https://www.ovito.org/
+
+ This PyPI package provides the ovito module, which allows you to employ OVITO's
+ data I/O, analysis and rendering capabilities in standalone Python scripts and
+ integrate them into automated workflows.
+
+ The OVITO desktop application is available as a separate download from
+ www.ovito.org. It provides a graphical user interface for interactive analysis
+ and visualization of simulation data."""
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('SciPy-Stack', '2019a', versionsuffix, ('gcccoremkl', '8.3.0-2019.3.199')),  # needs numpy
+]
+
+
+# this is a bundle of Python packages
+exts_defaultclass = 'PythonPackage'
+use_pip=True
+download_dep_fail=True
+
+exts_list = [
+    ('shiboken2', '5.15.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/s/shiboken2/', 'https://download.qt.io/official_releases/QtForPython/shiboken2/'],
+        'source_tmpl': '%(name)s-%(version)s-%(version)s-cp35.cp36.cp37.cp38-abi3-manylinux1_x86_64.whl',
+        'unpack_sources': False,
+    }),
+    ('PySide2', '5.15.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/s/shiboken2/', 'https://download.qt.io/official_releases/QtForPython/shiboken2/'],
+        'source_tmpl': '%(name)s-%(version)s-%(version)s-cp35.cp36.cp37.cp38-abi3-manylinux1_x86_64.whl',
+        'unpack_sources': False,
+        'modulename': 'PySide2',
+    }),
+    ('ovito', '3.1.2', {
+        'source_urls': ['https://pypi.python.org/packages/source/o/ovito/'],
+        'source_tmpl': '%(name)s-%(version)s-cp36-cp36m-manylinux1_x86_64.whl',
+        'unpack_sources': False,
+    }),
+]
+
+modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages']
+}
+
+moduleclass = 'lib'
