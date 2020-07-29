@@ -26,11 +26,11 @@ dependencies = [
     ('GromacsWrapper', '0.8.0', versionsuffix),
     ('mpi4py', '3.0.1', versionsuffix),
     ('netcdf4-python', '1.5.0.1', versionsuffix),
+    ('ovito', '3.1.2', versionsuffix),
 ]
 
 download_dep_fail = True
 use_pip = True
-# use_pip_editable = True
 
 sanity_check_paths = {
     'files': [],

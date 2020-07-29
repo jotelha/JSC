@@ -16,7 +16,7 @@ sources = [{
     'git_config': {
         'url': 'https://github.com/IMTEK-Simulation',
         'repo_name': 'code-snippets',
-        'tag': '20_cli',
+        'tag': 'master',
     },
 }]
 
@@ -26,6 +26,7 @@ dependencies = [
     ('GromacsWrapper', '0.8.0', versionsuffix),
     ('mpi4py', '3.0.1', versionsuffix),
     ('netcdf4-python', '1.5.0.1', versionsuffix),
+    ('ovito', '3.1.2', versionsuffix),
 ]
 
 download_dep_fail = True
