@@ -29,7 +29,7 @@ dependencies = [
     ('mock-ssh-server', '0.8.1', versionsuffix),
     ('pid', '3.0.0', versionsuffix),
     ('python-daemon', '2.2.4', versionsuffix),
-    ('FireWorks', '1.9.5-mod', versionsuffix),
+    ('FireWorks', '1.9.6-mod', versionsuffix),
 ]
 
 use_pip = True
