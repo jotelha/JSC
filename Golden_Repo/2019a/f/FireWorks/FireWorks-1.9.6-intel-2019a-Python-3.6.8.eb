@@ -35,6 +35,9 @@ exts_list = [
     ('monty', '3.0.2', {
         'source_urls': ['https://pypi.python.org/packages/source/m/monty/'],
     }),
+    ('prettytable', '0.7.2', { 
+        'source_urls': ['https://pypi.python.org/packages/source/p/prettytable/'],
+    }),
     ('pymongo', '3.10.1', {
         'source_urls': ['https://pypi.python.org/packages/source/p/pymongo/'],
         'check_ldshared': True,

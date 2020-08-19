@@ -1,12 +1,14 @@
 easyblock = 'PythonBundle'
 
 name = 'FireWorks'
-version = '1.9.5'
+version = '1.9.6-mod'
 versionsuffix = '-Python-%(pyver)s'
 
 homepage = 'https://materialsproject.github.io/fireworks/'
 description = """FireWorks is intended to be a friendly workflow software that
- is easy to get started with, but flexible enough to handle complicated use cases."""
+ is easy to get started with, but flexible enough to handle complicated use cases.
+ This is not the original FireWorks distribution, but incorporates custom
+ modifications within fork https://github.com/jotelha/fireworks."""
 
 toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
 
@@ -16,25 +18,13 @@ dependencies = [
     ('ruamel.yaml', '0.16.10', versionsuffix),
 ]
 
-# python-igraph 0.8.0 not compatible, leads to error in
-#
-# $ lpad check_wflow -i 24265 -g controlflow
-#
-# Traceback (most recent call last):
-#   File "/p/project/chfr13/common/juwels/easybuild/stages/2019a/software/imteksimfw/0.1.0-intel-2019a-Python-3.6.8/bin/lpad", line 11, in <module>
-#     load_entry_point('FireWorks==1.9.5', 'console_scripts', 'lpad')()
-#   File "/p/project/chfr13/common/juwels/easybuild/stages/2019a/software/FireWorks/1.9.5-intel-2019a-Python-3.6.8/lib/python3.6/site-packages/FireWorks-1.9.5-py3.6.egg/fireworks/scripts/lpad_run.py", line 1209, in lpad
-#     args.func(args)
-#   File "/p/project/chfr13/common/juwels/easybuild/stages/2019a/software/FireWorks/1.9.5-intel-2019a-Python-3.6.8/lib/python3.6/site-packages/FireWorks-1.9.5-py3.6.egg/fireworks/scripts/lpad_run.py", line 217, in check_wf
-#     dagf.to_dot(args.dot_file, view=args.view)
-#   File "/p/project/chfr13/common/juwels/easybuild/stages/2019a/software/FireWorks/1.9.5-intel-2019a-Python-3.6.8/lib/python3.6/site-packages/FireWorks-1.9.5-py3.6.egg/fireworks/utilities/dagflow.py", line 292, in to_dot
-#     graph = self.copy()
-# TypeError: __init__() got an unexpected keyword argument '__ptr'
+
+use_pip = True
+download_dep_fail=True
 
 # this is a bundle of Python packages
 exts_defaultclass = 'PythonPackage'
-use_pip=True
-download_dep_fail=True
+exts_default_options = { 'use_pip': True }
 
 exts_list = [
     ('flask-paginate', '0.5.0', { 
@@ -47,6 +37,9 @@ exts_list = [
     ('monty', '3.0.2', {
         'source_urls': ['https://pypi.python.org/packages/source/m/monty/'],
     }),
+    ('prettytable', '0.7.2', { 
+        'source_urls': ['https://pypi.python.org/packages/source/p/prettytable/'],
+    }),
     ('pymongo', '3.10.1', {
         'source_urls': ['https://pypi.python.org/packages/source/p/pymongo/'],
         'check_ldshared': True,
@@ -58,7 +51,8 @@ exts_list = [
         'source_urls': ['https://pypi.python.org/packages/source/t/tqdm/'],
     }),
     ('FireWorks', version, {
-        'source_urls': ['https://pypi.python.org/packages/source/F/FireWorks/'],
+        'source_urls': ['https://github.com/jotelha/fireworks/archive/'],
+        'source_tmpl': 'v%(version)s.tar.gz',
     }),
 ]
 
