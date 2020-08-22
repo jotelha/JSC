@@ -46,6 +46,11 @@ exts_list = [
         'use_pip': True, # requires pip installation
         'download_dep_fail': True,
     }),
+    ('configobj', '5.0.6', {
+        'source_urls': ['https://pypi.python.org/packages/source/c/configobj/'],
+        'use_pip': True, # requires pip installation
+        'download_dep_fail': True,
+    }),
 ]
 
 modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
