@@ -1,0 +1,35 @@
+easyblock = 'PythonPackage'
+
+name = 'pdb-tools'
+version = 'devel-mod'
+versionsuffix = '-Python-%(pyver)s'
+
+options = { 'modulename': 'pdbtools' }
+
+homepage = 'https://github.com/haddocking/pdb-tools'
+description = "A swiss army knife for manipulating and editing PDB files."
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+sources = [{
+    'filename': '%(name)s-%(version)s.tar.gz',
+    'git_config': {
+        'url': 'https://github.com/jotelha',
+        'repo_name': 'pdb-tools',
+        'tag': 'master',
+    }
+}]
+
+dependencies = [
+    ('Python', '3.6.8'),
+]
+
+download_dep_fail = True
+use_pip = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'tools'
