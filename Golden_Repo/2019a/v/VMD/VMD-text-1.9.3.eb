@@ -1,0 +1,37 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/easybuilders/easybuild
+# Authors::   Johannes Hoermann <johannes.hoermann@imtek.uni-freiburg.de>
+#
+# On JUWELS, this module from precompiled binaries without underlyinf toolchain
+# needs manual linking of the module file, i.e.
+#
+#   ln -s $EASYBUILD_INSTALLPATH_MODULES/all/Core/VMD-text EASYBUILD_INSTALLPATH/UI/Tools/VMD-text
+#
+# How to remove that requirement for manual interference?
+#
+##
+easyblock = 'ConfigureMakeWithoutPrefix'
+name = 'VMD-text'
+version = '1.9.3'
+
+homepage = 'http://www.ks.uiuc.edu/Research/vmd'
+description = """VMD is a molecular visualization program for displaying, animating, and analyzing large biomolecular
+ systems using 3-D graphics and built-in scripting."""
+
+toolchain = {'version': 'dummy', 'name': 'dummy'}
+
+source_urls = ['https://www.ks.uiuc.edu/Research/vmd/vmd-1.9.3/files/final']
+sources= ['vmd-%(version)s.bin.LINUXAMD64.text.tar.gz']
+
+# configure step
+configure_cmd_prefix = 'VMDINSTALLBINDIR="%(installdir)s/bin" VMDINSTALLLIBRARYDIR="%(installdir)s/lib" '
+
+# build step
+skipsteps = ['build']
+
+# install step
+preinstallopts = 'cd src && '
+
+modextrapaths = {'PATH': ['bin']}
+moduleclass = 'tools'
+
