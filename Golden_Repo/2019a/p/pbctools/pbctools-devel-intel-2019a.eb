@@ -1,0 +1,52 @@
+# This file is part of the https://github.com/jotelha/JSC/tree/hfr13 fork
+# of JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+easyblock = 'VMDPluginsExtension'
+
+name = 'pbctools'
+version = 'devel'
+
+homepage = 'https://github.com/frobnitzem/pbctools'
+description = """
+The VMD plugin pbctools provides Tcl functions to handle periodic boundary conditions. 
+"""
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+# only extract Makefiles from VMD plugins source
+sources = [
+  {
+    'source_urls': ['https://www.ks.uiuc.edu/Research/vmd/vmd-1.9.3/files/final'],
+    'filename': 'vmd-1.9.3.src.tar.gz',
+    'extract_cmd': 'tar -x plugins/Makefile plugins/Make-arch -vzf %s'
+  }, {
+    'filename': '%(name)s-%(version)s.tar.gz',
+    'git_config': {
+        'url': 'https://github.com/frobnitzem',
+        'repo_name': 'pbctools',
+        'tag': 'master',
+    }
+  }
+]
+
+patches = [
+  'VMD-Plugins-1.9.3_make-arch.patch',
+  'VMD-Plugins-1.9.3_Makefile.patch',
+]
+
+build_dirs = ['%(name)s']
+
+dependencies = [
+  ('Tcl', '8.6.9'),
+]
+
+skipsteps = ['configure']
+
+sanity_check_paths = {
+   'files': [],
+   'dirs':  ['LINUXAMD64/tcl'],
+}
+
+modextrapaths = {
+  'TCLLIBPATH': ['LINUXAMD64/tcl'] }
+
+moduleclass = 'chem'

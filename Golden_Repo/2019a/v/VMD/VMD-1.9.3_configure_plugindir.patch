@@ -1,0 +1,32 @@
+Use custom plugin dir in configure step as well
+
+Johannes Hoermann, University of Freiburg, 20200916
+--- vmd-1.9.3/configure.orig	2020-09-16 22:43:38.352257885 +0200
++++ vmd-1.9.3/configure	2020-09-16 22:48:26.965914647 +0200
+@@ -136,7 +136,7 @@
+ ############################################################################
+ 
+ ## Test for existence of a properly compiled plugin tree
+-if (!(-e "plugins")) {
++if (!(-e "$ENV{PLUGINDIR}")) {
+   print "\n";
+   print "VMD plugin directory not found.\n";
+   print "Please compile the VMD plugins and do 'make distrib' to copy them\n";
+@@ -146,7 +146,7 @@
+   print "\n";
+   die "Halting configuration until VMD plugins are built.\n";
+ } else {
+-  if (!(-e "plugins/include/vmdplugin.h")) {
++  if (!(-e "$ENV{PLUGINDIR}/include/vmdplugin.h")) {
+     print "\n";
+     print "VMD plugin include files or directory not found.\n";
+     print "Please compile the VMD plugins and do 'make distrib' to copy them\n";
+@@ -507,7 +507,7 @@
+ 
+ ################ Plugin options
+ #
+-$plugin_dir	= "../plugins";
++$plugin_dir	= "$ENV{VMDINSTALLNAME}";
+ $plugin_include = "-I$plugin_dir/include";
+ $plugin_library = "";
+ $plugin_libs    = "";
