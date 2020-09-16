@@ -1,7 +1,5 @@
-# This file is part of JSC's public easybuild repository (https://github.com/easybuilders/jsc)
-easyblock = 'ConfigureMake'
-
 name = 'VMD-Plugins'
+versionprefix = 'testing-'
 version = '1.9.3'
 
 homepage = 'https://www.ks.uiuc.edu/Research/vmd/plugins/doxygen/compiling.html'
@@ -11,33 +9,27 @@ VMD supports computers running MacOS X, Unix, or Windows, is distributed free of
 charge, and includes source code. 
 """
 
-# toolchain = {'name': 'iccifort', 'version': '2019.3.199-GCC-8.3.0'}
 toolchain = {'name': 'intel', 'version': '2019a'}
-toolchainopts = {'pic': True } # , 'usempi': True}
 
 sources = [{
   'source_urls': ['https://www.ks.uiuc.edu/Research/vmd/vmd-%(version)s/files/final'],
   'filename': 'vmd-%(version)s.src.tar.gz',
-  'extract_cmd': 'tar -x plugins -vzf %s'
+  'extract_cmd': 'tar -x plugins -vzf %s',
 }]
+
+patches = [
+  'VMD-Plugins-%(version)s_make-arch.patch',
+]
 
 dependencies = [
   ('netCDF', '4.6.3'),
   ('Tcl', '8.6.9'),
 ]
 
-# build_type = False
-# host_type = False
-skipsteps = ['configure','install']
-# unpack_options = ""
+skipsteps=["configure"]
 
-# It would be better to call "nc-config --libs" and "nc-config --cflags" for determining linker options
-prebuildopts= 'TCLLIB="-L${EBROOTTCL}/lib -ltcl8.6" TCLINC="-I${EBROOTTCL}/include" NETCDFLIB="-L${EBROOTNETCDF}/lib -lnetcdf" NETCDFINC="-I${EBROOTNETCDF}/include"'
-buildopts   = "LINUXAMD64"
-parallel    = 1
-# preinstallopts="PLUGINDIR=%(installdir)s"
-# install_cmd = "make distrib"
-postinstallcmds=["PLUGINDIR=%(installdir)s make distrib"]
+# This buildopts should not be hardcoded here
+buildopts = "LINUXAMD64"
 
 sanity_check_paths = {
    'files': [ 'LINUXAMD64/molfile/libmolfile_plugin.h', 'LINUXAMD64/molfile/libmolfile_plugin.a', 'include/molfile_plugin.h' ],
