@@ -68,13 +68,13 @@ class EB_VMD(ConfigureMake):
         """
         # make sure required dependencies are available
         deps = {}
-        for dep in ['FLTK', 'Mesa', 'netCDF', 'Python', 'Tcl', 'Tk']:
+        for dep in ['netCDF', 'Python', 'Tcl']:
             deps[dep] = get_software_root(dep)
             if deps[dep] is None:
                 raise EasyBuildError("Required dependency %s is missing", dep)
 
         # optional dependencies
-        for dep in ['ACTC', 'CUDA', 'OptiX']:
+        for dep in ['FLTK', 'Mesa', 'ACTC', 'CUDA', 'OptiX', 'Tk']:
             deps[dep] = get_software_root(dep)
 
         # specify Tcl/Tk locations & libraries
@@ -83,11 +83,12 @@ class EB_VMD(ConfigureMake):
         env.setvar('TCL_INCLUDE_DIR', tclinc)
         env.setvar('TCL_LIBRARY_DIR', tcllib)
 
-        env.setvar('TK_INCLUDE_DIR', os.path.join(deps['Tk'], 'include'))
-        env.setvar('TK_LIBRARY_DIR', os.path.join(deps['Tk'], 'lib'))
-
         tclshortver = '.'.join(get_software_version('Tcl').split('.')[:2])
         self.cfg.update('buildopts', 'TCLLDFLAGS="-ltcl%s"' % tclshortver)
+
+        if 'Tk' in deps and deps['Tk'] is not None:
+            env.setvar('TK_INCLUDE_DIR', os.path.join(deps['Tk'], 'include'))
+            env.setvar('TK_LIBRARY_DIR', os.path.join(deps['Tk'], 'lib'))
 
         # Netcdf locations
         netcdfinc = os.path.join(deps['netCDF'], 'include')
