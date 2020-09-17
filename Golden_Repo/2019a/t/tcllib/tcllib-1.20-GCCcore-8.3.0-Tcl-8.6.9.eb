@@ -1,0 +1,30 @@
+# This file is part of the https://github.com/jotelha/JSC/tree/hfr13 fork of
+# JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+easyblock = 'ConfigureMakeTclPackage'
+
+name = 'tcllib'
+version = '1.20'
+tcl_ver = '8.6.9'
+versionsuffix = '-Tcl-%s' % tcl_ver
+
+homepage = 'https://www.tcl.tk/software/tcllib'
+description = """
+Tcllib is a collection of utility modules for Tcl. These modules provide a wide
+variety of functionality, from implementations of standard data structures to
+implementations of common networking protocols. The intent is to collect
+commonly used function into a single library, which users can rely on to be
+available and stable. 
+"""
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+source_urls = ["https://core.tcl-lang.org/tcllib/uv"]
+sources = ['%(name)s-%(version)s.tar.gz']
+
+dependencies = [
+    ('Tcl', tcl_ver),
+]
+
+tcllibpath = 'lib/tcllib%(version)s'
+
+moduleclass = 'lib'

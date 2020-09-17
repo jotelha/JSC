@@ -1,5 +1,7 @@
 name = 'VMD-Plugins'
 version = '1.9.3'
+tcl_ver = '8.6.9'
+versionsuffix = '-Tcl-%s' % tcl_ver
 
 homepage = 'https://www.ks.uiuc.edu/Research/vmd/plugins/doxygen/compiling.html'
 description = """VMD is a molecular visualization program for displaying, animating, and
@@ -22,7 +24,7 @@ patches = [
 
 dependencies = [
   ('netCDF', '4.6.3'),
-  ('Tcl', '8.6.9'),
+  ('Tcl', tcl_ver),
 ]
 
 skipsteps=["configure"]

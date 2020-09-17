@@ -1,0 +1,36 @@
+# This file is part of the https://github.com/jotelha/JSC/tree/hfr13 fork of 
+# JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+easyblock = 'ConfigureMake'
+
+name = 'rlwrap'
+version = '0.43'
+
+homepage = 'https://github.com/hanslub42/rlwrap'
+description = """
+rlwrap is a 'readline wrapper', a small utility that uses the GNU
+readline library to allow the editing of keyboard input for any
+command.
+"""
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+source_urls = ["https://github.com/hanslub42/rlwrap/archive"]
+sources = ['v%(version)s.tar.gz']
+
+preconfigopts = "autoreconf -vif && "
+
+builddependencies = [
+    ('Autotools', '20180311'),
+]
+
+dependencies = [
+    ('libreadline', '8.0'),
+    ('ncurses', '6.1'),
+]
+
+sanity_check_paths = {
+    'files': ['bin/rlwrap'],
+    'dirs': ['share']
+}
+
+moduleclass = 'tools'

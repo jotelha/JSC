@@ -4,6 +4,8 @@ easyblock = 'VMDPluginsExtension'
 
 name = 'topotools'
 version = 'devel'
+tcl_ver = '8.6.9'
+versionsuffix = '-Tcl-%s' % tcl_ver
 
 homepage = 'https://github.com/akohlmey/topotools'
 description = """
@@ -12,7 +14,7 @@ description = """
   etc. and their corresponding properties (type, order, etc.).
   """
 
-toolchain = {'name': 'intel', 'version': '2019a'}
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
 
 # only extract Makefiles from VMD plugins source
 sources = [
@@ -38,7 +40,7 @@ patches = [
 build_dirs = ['%(name)s']
 
 dependencies = [
-  ('Tcl', '8.6.9'),
+  ('Tcl', tcl_ver),
 ]
 
 skipsteps = ['configure']
@@ -48,7 +50,6 @@ sanity_check_paths = {
    'dirs':  ['noarch/tcl'],
 }
 
-modextrapaths = {
-  'TCLLIBPATH': ['noarch/tcl'] }
+tcllibpath = 'noarch/tcl'
 
 moduleclass = 'chem'

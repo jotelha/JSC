@@ -4,13 +4,15 @@ easyblock = 'VMDPluginsExtension'
 
 name = 'pbctools'
 version = 'devel'
+tcl_ver = '8.6.9'
+versionsuffix = '-Tcl-%s' % tcl_ver
 
 homepage = 'https://github.com/frobnitzem/pbctools'
 description = """
 The VMD plugin pbctools provides Tcl functions to handle periodic boundary conditions. 
 """
 
-toolchain = {'name': 'intel', 'version': '2019a'}
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
 
 # only extract Makefiles from VMD plugins source
 sources = [
@@ -36,7 +38,8 @@ patches = [
 build_dirs = ['%(name)s']
 
 dependencies = [
-  ('Tcl', '8.6.9'),
+  ('Tcl', tcl_ver),
+  ('tcllib', '1.20', versionsuffix)
 ]
 
 skipsteps = ['configure']
@@ -46,7 +49,6 @@ sanity_check_paths = {
    'dirs':  ['LINUXAMD64/tcl'],
 }
 
-modextrapaths = {
-  'TCLLIBPATH': ['LINUXAMD64/tcl'] }
+tcllibpath = 'LINUXAMD64/tcl'
 
 moduleclass = 'chem'

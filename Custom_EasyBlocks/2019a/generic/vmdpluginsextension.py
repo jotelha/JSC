@@ -3,6 +3,9 @@
 # Copyright 2009-2020 Ghent University
 # Copyright 2015-2020 Stanford University
 #
+# This file is part of the https://github.com/jotelha/JSC/tree/hfr13 fork of
+# JSC's public easybuild repository (https://github.com/easybuilders/jsc).
+
 # This file is based on vmd.py, part of EasyBuild,
 # originally created by the HPC team of Ghent University (http://ugent.be/hpc/en),
 # with support of Ghent University (http://ugent.be/hpc),
@@ -34,14 +37,13 @@ EasyBuild support for VMD, implemented as an easyblock
 import os
 import shutil
 
-from easybuild.framework.easyblock import EasyBlock
 from easybuild.framework.easyconfig import CUSTOM
 from easybuild.tools.build_log import EasyBuildError
 from easybuild.tools.run import run_cmd
 from easybuild.tools.modules import get_software_root, get_software_version
 import easybuild.tools.environment as env
 
-from easybuild.easyblocks.vmd_plugins import EB_VMD_minus_Plugins
+from easybuild.easyblocks.generic.configuremaketclpackage import ConfigureMakeTclPackage
 
 # from Makefile snippet 'default_builddirs' via
 #    cat default_builddirs | sed 's/\\//' | sed -E 's/^ +//' | xargs echo -n | tr ' ' '\n' | sed -E 's/^(.*)$/    "\1",/' > default_builddirs_formatted
@@ -161,7 +163,7 @@ DEFAULT_BUILD_DIRS = [
     "zoomseq",
 ]
 
-class VMDPluginsExtension(EB_VMD_minus_Plugins):
+class VMDPluginsExtension(ConfigureMakeTclPackage):
     """
     Easyblock for building and installing VMD-Plugins extensions
     (i.e. development versions of specific plugins) as modules.
@@ -170,7 +172,7 @@ class VMDPluginsExtension(EB_VMD_minus_Plugins):
     @staticmethod
     def extra_options(extra_vars=None):
         """Extra easyconfig parameters specific to VMDPluginsExtension."""
-        extra_vars = EasyBlock.extra_options(extra=extra_vars)
+        extra_vars = ConfigureMakeTclPackage.extra_options(extra_vars=extra_vars)
         extra_vars.update({
             'build_dirs': [DEFAULT_BUILD_DIRS, "Plugin dirs to build", CUSTOM],
         })

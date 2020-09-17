@@ -2,7 +2,10 @@
 # Copyright 2009-2020 Ghent University
 # Copyright 2015-2020 Stanford University
 #
-# This file is part of EasyBuild,
+# This file is part of the https://github.com/jotelha/JSC/tree/hfr13 fork of
+# JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+
+# This file is based on vmd.py, part of EasyBuild,
 # originally created by the HPC team of Ghent University (http://ugent.be/hpc/en),
 # with support of Ghent University (http://ugent.be/hpc),
 # the Flemish Supercomputer Centre (VSC) (https://vscentrum.be/nl/en),
@@ -24,7 +27,8 @@
 # along with EasyBuild.  If not, see <http://www.gnu.org/licenses/>.
 ##
 """
-EasyBuild support for VMD, implemented as an easyblock
+EasyBuild support for VMD (also in minimal text mode configuration), 
+implemented as an easyblock
 
 @author: Stephane Thiell (Stanford University)
 @author: Kenneth Hoste (HPC-UGent)
@@ -44,7 +48,7 @@ import easybuild.tools.toolchain as toolchain
 
 
 class EB_VMD(ConfigureMake):
-    """Easyblock for building and installing VMD"""
+    """Easyblock for building and installing VMD, in text mode if desired."""
 
     def __init__(self, *args, **kwargs):
         """Initialize VMD-specific variables."""

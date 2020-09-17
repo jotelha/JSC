@@ -5,7 +5,10 @@
 name = 'VMD'
 version = '1.9.3'
 versionprefix = 'text-'
-versionsuffix = '-Python-%(pyver)s'
+tcl_ver = '8.6.9'
+pyversuf = '-Python-%(pyver)s'
+tclversuf = '-Tcl-%s' % tcl_ver
+versionsuffix = '%s%s' % (pyversuf, tclversuf)
 
 homepage = 'http://www.ks.uiuc.edu/Research/vmd'
 description = """VMD is a molecular visualization program for displaying, animating, and analyzing large biomolecular
@@ -41,9 +44,9 @@ checksums = [
 ]
 
 dependencies = [
-    ('Tcl', '8.6.9'),
+    ('Tcl', tcl_ver),
     ('Python', '2.7.16'),
-    ('SciPy-Stack', '2019a', versionsuffix, ('gcccoremkl', '8.3.0-2019.3.199')),
+    ('SciPy-Stack', '2019a', pyversuf, ('gcccoremkl', '8.3.0-2019.3.199')),
     ('netCDF', '4.6.3'),
 ]
 

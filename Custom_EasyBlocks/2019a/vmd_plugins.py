@@ -33,14 +33,14 @@ EasyBuild support for VMD, implemented as an easyblock
 """
 import os
 
-from easybuild.easyblocks.generic.configuremake import ConfigureMake
+from easybuild.easyblocks.generic.configuremaketclpackage import ConfigureMakeTclPackage
 from easybuild.tools.build_log import EasyBuildError
 from easybuild.tools.run import run_cmd
 from easybuild.tools.modules import get_software_root, get_software_version
 import easybuild.tools.environment as env
 
 
-class EB_VMD_minus_Plugins(ConfigureMake):
+class EB_VMD_minus_Plugins(ConfigureMakeTclPackage):
     """Easyblock for building and installing VMD-Plugins"""
 
     def __init__(self, *args, **kwargs):
