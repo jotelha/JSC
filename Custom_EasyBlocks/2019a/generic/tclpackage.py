@@ -15,13 +15,12 @@ import re
 from easybuild.framework.easyblock import EasyBlock
 from easybuild.framework.easyconfig import CUSTOM
 
-
 # for distinguishing module syntax
 from easybuild.tools.module_generator import ModuleGeneratorLua  # , ModuleGeneratorTcl
 
 # regex and replacement pattern for customizing path separator in Lua module files
-UPDATE_PATH_REGEX = '^(append|prepend)_path\("([^"]+)", (.*)\)$'
-UPDATE_PATH_REPLACEMENT = r'\1_path("\2", \3, " ")'
+UPDATE_PATH_REGEX_LUA = '^(append|prepend)_path\("([^"]+)", (.*)\)$'
+UPDATE_PATH_REPLACEMENT_LUA = r'\1_path("\2", \3, " ")'
 
 class TclPackage(EasyBlock):
     """Easyblock for building and installing tcl packages."""
@@ -44,17 +43,20 @@ class TclPackage(EasyBlock):
 
         if 'tcllibpath' in self.cfg and self.cfg['tcllibpath'] is not None:
             tcllibpath = self.cfg['tcllibpath']
-            delim = ' '
-
-            # module_generator.prepend_paths should have option for specifiying separator
-            extra_txt = self.module_generator.prepend_paths('TCLLIBPATH', tcllibpath)
+            if isinstance(tcllibpath, basestring):
+                tcllibpath = [tcllibpath]
+            
+            statements = []
+            for path in tcllibpath:
+                # module_generator.prepend_paths should have option for specifiying separator
+                extra_txt = self.module_generator.prepend_paths('TCLLIBPATH', path)
                         
-            if isinstance(self.module_generator, ModuleGeneratorLua):
-                p = re.compile(UPDATE_PATH_REGEX, re.MULTILINE)
-                statements = [p.sub(UPDATE_PATH_REPLACEMENT, line) for line in extra_txt.splitlines()]
-            else:
-                # TODO: straight forward for Tcl modules as well
-                NotImplementedError("Lua modules only.")
+                if isinstance(self.module_generator, ModuleGeneratorLua):
+                    p = re.compile(UPDATE_PATH_REGEX_LUA, re.MULTILINE)
+                    statements.extend([p.sub(UPDATE_PATH_REPLACEMENT_LUA, line) for line in extra_txt.splitlines()])
+                else:
+                    # TODO: actually straightforward for Tcl modules as well
+                    NotImplementedError("Lua modules only.")
             
             statements.append('')
             txt += '\n'.join(statements)

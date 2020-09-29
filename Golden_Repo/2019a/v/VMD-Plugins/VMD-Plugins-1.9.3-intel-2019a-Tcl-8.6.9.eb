@@ -42,7 +42,8 @@ modextrapaths = {
   'CPATH': ['LINUXAMD64/molfile'],
   'LD_LIBRARY_PATH': ['LINUXAMD64/molfile'],
   'LIBRARY_PATH': ['LINUXAMD64/molfile'],
-  'TCLLIBPATH': ['LINUXAMD64/tcl', 'noarch/tcl'],
 }
+
+tcllibpath = ['LINUXAMD64/tcl', 'noarch/tcl']
 
 moduleclass = 'chem'
