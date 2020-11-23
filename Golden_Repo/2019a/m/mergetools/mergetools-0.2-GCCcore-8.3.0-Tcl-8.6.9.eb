@@ -1,0 +1,51 @@
+# This file is part of the https://github.com/jotelha/JSC/tree/hfr13 fork
+# of JSC's public easybuild repository (https://github.com/easybuilders/jsc)
+easyblock = 'VMDPluginsExtension'
+
+name = 'mergetools'
+version = '0.2'
+tcl_ver = '8.6.9'
+versionsuffix = '-Tcl-%s' % tcl_ver
+
+homepage = 'https://github.com/akohlmey/topotools'
+description = """
+  MergeTools is a plugin for VMD that helps to merge two (solvated) systems.
+  """
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+# only extract Makefiles from VMD plugins source
+sources = [
+  {
+    'source_urls': ['https://www.ks.uiuc.edu/Research/vmd/vmd-1.9.3/files/final'],
+    'filename': 'vmd-1.9.3.src.tar.gz',
+    'extract_cmd': 'tar -x plugins/Makefile plugins/Make-arch -vzf %s'
+  }, {
+    'source_urls': ['https://github.com/jotelha/mergetools/archive'],
+    'filename': 'v%(version)s.tar.gz',
+  }
+]
+
+patches = [
+  'VMD-Plugins-1.9.3_make-arch.patch',
+  'VMD-Plugins-1.9.3_Makefile.patch',
+]
+
+build_dirs = ['%(name)s-%(version)s']
+
+dependencies = [
+  ('Tcl', tcl_ver),
+  ('topotools','devel', versionsuffix), 
+  ('pbctools', 'devel-mod', versionsuffix),
+]
+
+skipsteps = ['configure']
+
+sanity_check_paths = {
+   'files': [],
+   'dirs':  ['noarch/tcl'],
+}
+
+tcllibpath = 'noarch/tcl'
+
+moduleclass = 'chem'

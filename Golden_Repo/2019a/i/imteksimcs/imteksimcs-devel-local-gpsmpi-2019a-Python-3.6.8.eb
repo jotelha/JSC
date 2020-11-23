@@ -9,7 +9,7 @@ options = { 'modulename': 'imteksimcs' }
 homepage = 'https://github.com/haddocking/pdb-tools'
 description = "This repository contains a random collection of code snippets for pre- and postprocessing simulation runs with Ovito, ASE and other tools."
 
-toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+toolchain = {'name': 'gpsmpi', 'version': '2019a'}
 
 sources = [{
     'filename': 'imteksimcs-devel.tar.gz',
@@ -22,10 +22,10 @@ sources = [{
 
 dependencies = [
     ('Python', '3.6.8'),
-    ('ParmEd', '3.1.0', versionsuffix),
-    ('GromacsWrapper', '0.8.0', versionsuffix),
-    ('mpi4py', '3.0.1', versionsuffix),
-    ('netcdf4-python', '1.5.0.1', versionsuffix),
+    # ('ParmEd', '3.1.0', versionsuffix),  # so far not with GCC
+    # ('GromacsWrapper', '0.8.0', versionsuffix),  # no GROMACS and GromacsWrapper for GCC
+    ('mpi4py', '3.0.1', versionsuffix),  # with ParaStationMPI/5.2.2-1
+    ('netcdf4-python', '1.5.0.1', versionsuffix),  # with ParaStationMPI/5.2.2-1
     ('ovito', '3.1.2', versionsuffix),
 ]
 

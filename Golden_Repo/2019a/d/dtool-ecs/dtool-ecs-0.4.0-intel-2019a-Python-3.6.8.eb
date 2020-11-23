@@ -1,0 +1,54 @@
+easyblock = 'PythonBundle'
+
+name = 'dtool-ecs'
+version = '0.4.0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://github.com/trbs/pid'
+description = """ECS S3 support to dtool."""
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+# source_urls = [PYPI_SOURCE]
+# sources = [SOURCE_TAR_GZ]
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('dtool', '3.25.0', versionsuffix),
+    ('click-plugins', '1.1.1', versionsuffix),    
+]
+
+use_pip = True
+download_dep_fail = True
+sanity_pip_check = True
+
+exts_list = [
+    ('dtoolcore', '3.17.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtoolcore/'],
+    }),
+    ('jmespath', '0.10.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/j/jmespath/'],
+    }),
+    ('botocore', '1.18.9', {
+        'source_urls': ['https://pypi.python.org/packages/source/b/botocore/'],
+    }),
+    ('s3transfer', '0.3.3', {
+        'source_urls': ['https://pypi.python.org/packages/source/s/s3transfer/'],
+    }),
+    ('boto3', '1.15.8', {
+        'source_urls': ['https://pypi.python.org/packages/source/b/boto3/'],
+    }),
+    ('dtool-s3', '0.10.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtool-s3/'],
+    }),
+    ('dtool-ecs', '0.4.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtool-ecs/'],
+    }),
+
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'tools'
