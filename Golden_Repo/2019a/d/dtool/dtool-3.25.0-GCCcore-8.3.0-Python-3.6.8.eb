@@ -1,0 +1,66 @@
+easyblock = 'PythonBundle'
+
+name = 'dtool'
+version = '3.25.0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://github.com/trbs/pid'
+description = """dtool is a suite of software for managing scientific data and
+  making it accessible programatically. It consists of a command line interface
+  dtool and a Python API: dtoolcore.PidFile class."""
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('click-plugins', '1.1.1', versionsuffix),    
+    ('parse', '1.15.0', versionsuffix),    
+    ('ruamel.yaml', '0.16.10', versionsuffix),    
+]
+
+use_pip = True
+download_dep_fail = True
+sanity_pip_check = True
+
+exts_list = [
+    ('dtoolcore', '3.17.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtoolcore/'],
+    }),
+    ('dtool-cli', '0.7.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtool-cli/'],
+    }),
+    ('dtool-create', '0.23.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtool-create/'],
+    }),
+    ('dtool-info', '0.16.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtool-info/'],
+    }),
+    ('dtool-symlink', '0.3.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtool-symlink/'],
+    }),
+    ('dtool-http', '0.5.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtool-http/'],
+    }),
+    ('dtool-config', '0.4.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtool-config/'],
+    }),
+    ('dtool-overlay', '0.3.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtool-overlay/'],
+    }),
+    ('dtool-annotation', '0.1.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtool-annotation/'],
+    }),
+    ('dtool-tag', '0.1.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtool-tag/'],
+    }),
+    ('dtool', '3.25.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/dtool/'],
+    }),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'tools'

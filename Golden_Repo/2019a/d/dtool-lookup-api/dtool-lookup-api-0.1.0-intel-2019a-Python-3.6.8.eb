@@ -1,0 +1,33 @@
+easyblock = 'PythonPackage'
+
+name = 'dtool-lookup-api'
+version = '0.1.0'
+versionsuffix = '-Python-%(pyver)s'
+
+options = { 'modulename': 'dtool_lookup_api' }
+
+homepage = 'https://github.com/IMTEK-Simulation/dtool-lookup-api'
+description = "Python API for interacting with dtool lookup server."
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [
+    ('Python', '3.6.8'),
+    ('dtool', '3.25.0', versionsuffix),
+    ('aiohttp', '3.7.3', versionsuffix),
+    ('asgiref', '3.3.1', versionsuffix),
+]
+
+use_pip = True
+download_dep_fail = True
+sanity_pip_check = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'lib'

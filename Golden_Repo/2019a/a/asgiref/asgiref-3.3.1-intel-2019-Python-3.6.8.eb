@@ -1,0 +1,32 @@
+easyblock = 'PythonPackage'
+
+name = 'asgiref'
+version = '3.3.1'
+versionsuffix = '-Python-%(pyver)s'
+
+options = { 'modulename': 'asgiref' }
+
+homepage = 'https://github.com/django/asgiref'
+description = """ASGI is a standard for Python asynchronous web apps and servers
+  to communicate with each other, and positioned as an asynchronous successor to WSGI.
+   You can read more at https://asgi.readthedocs.io/en/latest/"""
+
+toolchain = {'name': 'intel', 'version': '2019a'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [
+    ('Python', '3.6.8'),
+]
+
+use_pip = True
+download_dep_fail = True
+sanity_pip_check = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'lib'
