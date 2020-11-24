@@ -25,9 +25,6 @@ exts_list = [
         'source_urls': ['https://pypi.python.org/packages/source/m/multidict/'],
         'installopts': '--no-use-pep517',
     }),
-    ('idna', '2.10', {
-        'source_urls': ['https://pypi.python.org/packages/source/i/idna/'],
-    }),
     ('idna-ssl', '1.1.0', {
         'source_urls': ['https://pypi.python.org/packages/source/i/idna_ssl/'],
         'modulename': 'idna_ssl',
