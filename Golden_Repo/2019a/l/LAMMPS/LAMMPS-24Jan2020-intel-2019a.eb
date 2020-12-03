@@ -42,7 +42,7 @@ dependencies = [
     ('PLUMED', '2.5.3'),
     ('tbb', '2019.4.199', '', True),
     ('virtualenv','16.7.9', versionsuffix),
-    ('VMD-Plugins', '1.9.3'),
+    ('VMD-Plugins', '1.9.3', '-Tcl-8.6.9'),
 ]
 
 separate_build_dir = True
@@ -63,12 +63,13 @@ configuration_options = [
 #  'BUILD_DOC']
 
 # Blacklist because of deps
-# USER-SMD PKG_USER-QUIP PKG_LATTE PKG_USER-QMMM PKG_USER-VTK PKG_KIM PKG_MSCG
-
+# USER-SMD PKG_USER-QUIP PKG_LATTE PKG_USER-QMMM PKG_USER-VTK PKG_KIM PKG_MSCG PKG_VORONOI (latter requires download)
+# Blacklist because of build errors
+# PKG_KOKKOS
 general_packages = ['PKG_ASPHERE', 'PKG_BODY', 'PKG_CLASS2', 'PKG_COLLOID', 'PKG_COMPRESS', 'PKG_CORESHELL',
-                    'PKG_DIPOLE', 'PKG_GRANULAR', 'PKG_KSPACE', 'PKG_KOKKOS', 'PKG_MANYBODY', 'PKG_MC', 
+                    'PKG_DIPOLE', 'PKG_GRANULAR', 'PKG_KSPACE', 'PKG_MANYBODY', 'PKG_MC', 
                     'PKG_MISC', 'PKG_MOLECULE', 'PKG_PERI', 'PKG_QEQ', 'PKG_REPLICA', 'PKG_RIGID', 
-                    'PKG_SHOCK', 'PKG_SNAP', 'PKG_SRD', 'PKG_VORONOI']
+                    'PKG_SHOCK', 'PKG_SNAP', 'PKG_SRD']
 
 other_packages = ['PKG_PYTHON', 'PKG_MPIIO', 'PKG_POEMS']
 
@@ -82,8 +83,8 @@ user_packages = ['PKG_USER-ATC', 'PKG_USER-AWPMD', 'PKG_USER-CGDNA', 'PKG_USER-C
 packages_opts = ' '.join("-D%s=on" % item for item in parallelisation_packages + general_packages + other_packages +
                          user_packages + configuration_options)
 
-# kspace_opts = ['FFT' + '=MKL', 'FFT_PACK' + '=array']
-kspace_opts = ['FFT' + '=FFTW3', 'FFT_PACK' + '=array']
+kspace_opts = ['FFT' + '=MKL', 'FFT_PACK' + '=array']
+# kspace_opts = ['FFT' + '=FFTW3', 'FFT_PACK' + '=array']
 
 optional_deps = ['WITH_JPEG', 'WITH_PNG', 'WITH_GZIP']
 
@@ -94,8 +95,8 @@ other_opts = ' '.join("-D%s=yes" % item for item in optional_deps)
 tbb_opts = [ 'TBB_INCLUDE_DIR' + '=${TBBROOT}/include',
              'TBB_LIBRARY'     + '=${TBBROOT}/lib/libtbb.so' ]
 
-kokkos_opts = [ 'KOKKOS_ENABLE_OPENMP' + '=yes',
-                'KOKKOS_ARCH' + '=SKX' ]
+# kokkos_opts = [ 'KOKKOS_ENABLE_OPENMP' + '=yes',
+#                'KOKKOS_ARCH' + '=SKX' ]
 # SKX = Intel Sky Lake Xeon E-class HPC CPUs (AVX512)
 # HSW = Haswell (FORHLR2: Intel(R) Xeon(R) CPU
 
@@ -120,7 +121,7 @@ devel_opts = [  'LAMMPS_EXCEPTIONS'         + '=yes',
 
 package_specific_opts = ' '.join([ 
   ' '.join("-D%s" % item for item in tbb_opts),
-  ' '.join("-D%s" % item for item in kokkos_opts),
+#  ' '.join("-D%s" % item for item in kokkos_opts),
   ' '.join("-D%s" % item for item in molfile_opts),
   ' '.join("-D%s" % item for item in plumed_opts),
   ' '.join("-D%s" % item for item in python_opts),

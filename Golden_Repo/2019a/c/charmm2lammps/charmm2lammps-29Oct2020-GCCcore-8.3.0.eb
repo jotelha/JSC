@@ -1,0 +1,32 @@
+easyblock = 'CmdCp'
+
+name = 'charmm2lammps'
+version = '29Oct2020'
+
+homepage = 'https://github.com/lammps/lammps/tree/master/tools/ch2lmp'
+description = """These tools were created by Pieter J. in 't Veld (pjintve@sandia.gov)
+ and Paul Crozier (pscrozi@sandia.gov), Sandia National Laboratories,
+ 2005. They are intended to make it easy to use CHARMM as a builder and
+ as a post-processor for LAMMPS. Using charmm2lammps.pl, you can
+ convert an ensemble built in CHARMM into its LAMMPS equivalent.  Using
+ lammps2pdb.pl you can convert LAMMPS atom dumps into pdb files."""
+
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+source_urls = ['https://github.com/lammps/lammps/archive/']
+sources = ['stable_%(version)s.tar.gz']
+
+build_cmd = None
+cmds_map = [('.*', '')]
+build_cmd = None
+
+# copy folder tools/ch2lmp in lammps source to bin in module folder
+files_to_copy = [(['tools/ch2lmp/*.pl'], 'bin')]
+
+sanity_check_paths = {
+    'files': ['bin/charmm2lammps.pl', 'bin/lammps2pdb.pl'],
+    'dirs': [],
+}
+
+moduleclass = 'tools'

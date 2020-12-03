@@ -1,0 +1,39 @@
+easyblock = 'PythonBundle'
+
+name = 'pysmb'
+version = '1.1.28'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://pysmb.readthedocs.io/en/latest/'
+description = """pysmb is an experimental SMB/CIFS library written in Python.
+ It implements the client-side SMB/CIFS protocol which allows your Python
+ application to access and transfer files to/from SMB/CIFS shared folders
+ like your Windows file sharing and Samba folders."""
+
+toolchain = {'name': 'GCCcore', 'version': '8.3.0'}
+
+dependencies = [
+    ('Python', '3.6.8'),
+]
+
+use_pip = True
+download_dep_fail = True
+sanity_pip_check = True
+
+exts_list = [
+    ('pyasn1', '0.4.8', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/pyasn1/'],
+    }),
+    ('pysmb', '1.1.28', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/pysmb/'],
+        'source_tmpl': '%(name)s-%(version)s.zip',
+        'modulename': 'smb',
+    }),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'tools'
