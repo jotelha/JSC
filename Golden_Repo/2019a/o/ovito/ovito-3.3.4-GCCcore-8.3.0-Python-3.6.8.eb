@@ -1,7 +1,7 @@
 easyblock = 'PythonPackage'
 
 name = 'ovito'
-version = '3.1.2'
+version = '3.3.4'
 versionsuffix = '-Python-%(pyver)s'
 
 homepage = 'https://pypi.org/project/ovito'
@@ -29,8 +29,9 @@ dependencies = [
     ('PySide2', '5.15.2', versionsuffix),
 ]
 
-use_pip = True
-download_dep_fail = True
+
+use_pip=True
+download_dep_fail=True
 
 sanity_check_paths = {
     'files': [],
