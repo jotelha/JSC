@@ -6,7 +6,7 @@ versionsuffix = '-Python-%(pyver)s'
 
 options = { 'modulename': 'imteksimcs' }
 
-homepage = 'https://github.com/haddocking/pdb-tools'
+homepage = 'https://github.com/IMTEK-Simulation/code-snippets'
 description = "This repository contains a random collection of code snippets for pre- and postprocessing simulation runs with Ovito, ASE and other tools."
 
 toolchain = {'name': 'intel', 'version': '2019a'}
