@@ -123,6 +123,52 @@ Reducing custom EasyConfigs to minimal foss toolchains where possible.
 * Golden_Repo/2019a/v/VMD-Plugins/VMD-Plugins-1.9.3-intel-2019a.eb
 * DONE: Golden_Repo/2019a/v/virtualenv/virtualenv-16.7.9-intel-2019a-Python-3.6.8.eb
 
+# Possibly obsolete
+
+Possible redundancies in need for recheck marked by (?).
+```
+A	Golden_Repo/2019a/a/ansible/ansible-2.9.6-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/a/arrow/arrow-0.15.5-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/a/asgiref/asgiref-3.3.1-intel-2019-Python-3.6.8.eb
+A	Golden_Repo/2019a/c/click-plugins/click-plugins-1.1.1-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/d/dill/dill-0.3.1.1-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/d/dtool-lookup-api/dtool-lookup-api-0.1.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/d/dtool-smb/dtool-smb-0.1.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/d/dtool-smb/dtool-smb-devel-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/d/dtool/dtool-3.25.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/e/EasyBuild/EasyBuild-4.1.1.eb
+A	Golden_Repo/2019a/f/FireWorks/FireWorks-1.9.5-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/f/FireWorks/FireWorks-1.9.5-mod-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/f/FireWorks/FireWorks-1.9.6-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/f/FireWorks/FireWorks-1.9.6-mod-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/g/GC3Pie/GC3Pie-2.5.0-GCCcore-8.3.0.eb
+? A	Golden_Repo/2019a/g/gsd/gsd-2.1.1-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/h/hunter/hunter-3.1.3-intel-2019a-Python-3.6.8.eb
+? A	Golden_Repo/2019a/i/igraph/igraph-0.7.1-GCCcore-8.3.0.eb
+? A	Golden_Repo/2019a/i/igraph/igraph-0.7.1-intel-2019a.eb
+? A	Golden_Repo/2019a/i/igraph/igraph-0.8.0-intel-2019a.eb
+A	Golden_Repo/2019a/i/imteksimfw/imteksimfw-devel-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/i/imteksimfw/imteksimfw-devel-local-intel-2019a-Python-3.6.8.eb
+? A	Golden_Repo/2019a/i/imteksimpyenv/imteksimpyenv-devel-GCCcore-8.3.0-Python-3.6.8.eb
+? A	Golden_Repo/2019a/i/imteksimpyenv/imteksimpyenv-devel-intel-2019a-Python-3.6.8.eb
+? A	Golden_Repo/2019a/j/jinja2-time/jinja2-time-0.2.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/p/PLY/PLY-3.11-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/p/ParmEd/ParmEd-3.1.0-intel-2019a-Python-3.6.8.eb
+? A	Golden_Repo/2019a/p/packmol/packmol-20.010-GCC-8.3.0.eb
+? A	Golden_Repo/2019a/p/packmol/packmol-20.010-iccifort-2019.3.199-GCC-8.3.0.eb
+A	Golden_Repo/2019a/p/parse/parse-1.15.0-intel-2019a-Python-3.6.8.eb
+? A	Golden_Repo/2019a/p/pdb-tools/pdb-tools-2.0.1-Python-3.6.8.eb
+? A	Golden_Repo/2019a/p/pdb-tools/pdb-tools-devel-mod-Python-3.6.8.eb
+A	Golden_Repo/2019a/p/pid/pid-3.0.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/p/pysmb/pysmb-1.1.28-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/p/python-daemon/python-daemon-2.2.4-intel-2019a-Python-3.6.8.eb
+? A	Golden_Repo/2019a/p/python-igraph/python-igraph-0.7.1.post6-GCCcore-8.3.0-Python-3.6.8.eb
+? A	Golden_Repo/2019a/p/python-igraph/python-igraph-0.7.1.post6-intel-2019a-Python-3.6.8.eb
+? A	Golden_Repo/2019a/p/python-igraph/python-igraph-0.8.0-intel-2019a-Python-3.6.8.eb
+A	Golden_Repo/2019a/r/ruamel.yaml/ruamel.yaml-0.16.10-intel-2019a-Python-3.6.8.eb
+? A	Golden_Repo/2019a/s/sortedcontainers/sortedcontainers-2.1.0-intel-2019a-Python-3.6.8.eb
+? A	Golden_Repo/2019a/v/virtualenv/virtualenv-16.7.9-GCCcore-8.3.0-Python-3.6.8.eb
+? A	Golden_Repo/2019a/v/virtualenv/virtualenv-16.7.9-intel-2019a-Python-3.6.8.eb
 
 # Custom EasyConfigs (diff to JSC/master, 2020/03/18)
 
