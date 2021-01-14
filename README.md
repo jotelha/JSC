@@ -170,6 +170,17 @@ A	Golden_Repo/2019a/r/ruamel.yaml/ruamel.yaml-0.16.10-intel-2019a-Python-3.6.8.e
 ? A	Golden_Repo/2019a/v/virtualenv/virtualenv-16.7.9-GCCcore-8.3.0-Python-3.6.8.eb
 ? A	Golden_Repo/2019a/v/virtualenv/virtualenv-16.7.9-intel-2019a-Python-3.6.8.eb
 
+# Extraction of custom EasyConfigs under conservation of directory tree
+
+```
+git checkout hfr13
+git diff --name-status master Golden_Repo/ | awk '{ print $2 }' > diff
+rsync -va --files-from=diff . $DESTINATION
+
+git diff --name-status master Custom_EasyBlocks/ | awk '{ print $2 }' > diff
+rsync -va --files-from=diff . $DESTINATION
+```
+
 # Custom EasyConfigs (diff to JSC/master, 2020/03/18)
 
 ```console
